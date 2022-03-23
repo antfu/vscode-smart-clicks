@@ -41,7 +41,7 @@ Matches open and close tag name of a HTML element.
 
 #### `js-assign`
 
-Matches JavaScript assignment.
+Matches JavaScript assignment with equal sign
 
 ```js
         v
