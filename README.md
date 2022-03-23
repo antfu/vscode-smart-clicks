@@ -41,6 +41,16 @@ foo-bar
 ^     ^
 ```
 
+#### [`html-blocks`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/html-blocks.ts)
+
+Matches the entire element by clicking the leading `<`.
+
+```html
+v
+<div><div></div></div>
+^                    ^
+```
+
 #### [`html-element-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/html-element-pair.ts)
 
 Matches open and close tag name of a HTML element.
