@@ -1,7 +1,7 @@
 {
   "name": "smart-clicks",
   "displayName": "Smart Clicks",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "publisher": "antfu",
   "packageManager": "pnpm@6.32.3",
   "description": "Smart selection with double clicks",
