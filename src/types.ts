@@ -1,4 +1,4 @@
-import type { Program as AstRootJS } from '@babel/types'
+import type { ParseResult as AstRootJS } from '@babel/parser'
 import type { Position, Range, Selection, TextDocument, TextEditor } from 'vscode'
 import type { HTMLElement as AstRootHTML } from 'node-html-parser'
 
@@ -35,6 +35,6 @@ export interface AstRoot<T> {
 export interface AstMap {
   // TODO:
   html?: AstRoot<AstRootHTML>
-  js?: AstRoot<AstRootJS>
+  js?: AstRoot<AstRootJS<any>>
   css?: AstRoot<any>
 }

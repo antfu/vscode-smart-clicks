@@ -1,4 +1,4 @@
-import { parse } from '@babel/core'
+import { parse } from '@babel/parser'
 import { channel } from '../log'
 import type { Parser } from '../types'
 
@@ -15,15 +15,16 @@ export const jsParser: Parser = {
       const root = parse(
         doc.getText(),
         {
+          sourceType: 'unambiguous',
           plugins: [
-            'typescript',
             'jsx',
+            'typescript',
           ],
         },
       )
       ast.js = {
         offset: 0,
-        root: root?.program,
+        root,
       }
     }
     catch (e) {
