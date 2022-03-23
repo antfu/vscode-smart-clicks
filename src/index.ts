@@ -3,7 +3,7 @@ import { Range, TextEditorSelectionChangeKind, window, workspace } from 'vscode'
 import { toArray } from '@antfu/utils'
 import { applyHandlers } from './handlers'
 import { applyParser } from './parsers'
-import type { AstMap, HandlerContext } from './types'
+import type { AstRoot, HandlerContext } from './types'
 import { toSelection } from './utils'
 import { log } from './log'
 
@@ -12,7 +12,7 @@ export function activate(ext: ExtensionContext) {
   let prevEditor: TextEditor | undefined
   let prevSelection: Selection | undefined
 
-  const astCache = new Map<string, AstMap>()
+  const astCache = new Map<string, AstRoot[]>()
 
   ext.subscriptions.push(
     workspace.onDidChangeTextDocument((e) => {
@@ -67,7 +67,7 @@ export function activate(ext: ExtensionContext) {
         : charLeft
 
       if (!astCache.has(doc.uri.fsPath))
-        astCache.set(doc.uri.fsPath, {})
+        astCache.set(doc.uri.fsPath, [])
 
       const context: HandlerContext = {
         editor,

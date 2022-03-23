@@ -1,23 +1,41 @@
 import type { HTMLElement } from 'node-html-parser'
 import { parse } from 'node-html-parser'
 import type { Parser } from '../types'
+import { parseJS } from './javascript'
 
 export const htmlParser: Parser = {
   name: 'html',
   handle: async({ ast, langId, doc }) => {
-    if (ast.html)
+    const id = 'html-root'
+    if (ast.find(i => i.id === id))
       return
 
     if (!['html', 'vue', 'svelte'].includes(langId))
       return
 
-    const root = parse(doc.getText(), {
+    const code = doc.getText()
+    const root = parse(code, {
       comment: true,
     })
 
-    ast.html = {
-      offset: 0,
+    ast.push({
+      type: 'html',
+      id,
+      start: 0,
+      end: code.length,
       root,
+      raw: code,
+    })
+
+    let htmlScriptCount = 0
+    for (const node of traverseHTML(root)) {
+      if (node.rawTagName === 'script') {
+        const script = node.childNodes[0]
+        const raw = node.innerHTML
+        const start = script.range[0]
+        const id = `html-script-${htmlScriptCount++}`
+        ast.push(parseJS(raw, id, start))
+      }
     }
   },
 }

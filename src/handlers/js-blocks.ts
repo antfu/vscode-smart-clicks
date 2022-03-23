@@ -11,52 +11,56 @@ import type { Handler } from '../types'
  */
 export const jsBlocksHandler: Handler = {
   name: 'js-blocks',
-  handle({ ast, selection, doc }) {
-    if (!ast.js?.root)
+  handle({ ast, selection, doc, anchorIndex }) {
+    const asts = ast.filter(i => i.type === 'js' && i.start <= anchorIndex && i.end >= anchorIndex)
+    if (!asts.length)
       return
 
-    const index = doc.offsetAt(selection.start)
+    for (const ast of asts) {
+      const index = doc.offsetAt(selection.start)
+      const supported = [
+        'ClassDeclaration',
+        'DoWhileStatement',
+        'ExportAllDeclaration',
+        'ExportDefaultDeclaration',
+        'ExportNamedDeclaration',
+        'ForStatement',
+        'FunctionDeclaration',
+        'IfStatement',
+        'ImportDeclaration',
+        'SwitchStatement',
+        'TryStatement',
+        'TSInterfaceDeclaration',
+        // TODO: support declartions on equal sign
+        // 'TSTypeAliasDeclaration',
+        // 'VariableDeclaration',
+        'WhileStatement',
+      ]
 
-    const supported = [
-      'ClassDeclaration',
-      'DoWhileStatement',
-      'ExportAllDeclaration',
-      'ExportDefaultDeclaration',
-      'ExportNamedDeclaration',
-      'ForStatement',
-      'FunctionDeclaration',
-      'IfStatement',
-      'ImportDeclaration',
-      'SwitchStatement',
-      'TryStatement',
-      'TSInterfaceDeclaration',
-      'TSTypeAliasDeclaration',
-      'VariableDeclaration',
-      'WhileStatement',
-    ]
+      let result: Selection |undefined
+      traverse(ast.root, {
+        enter(path) {
+          if (result)
+            return
+          if (path.node.start == null || path.node.end == null)
+            return
+          if (path.node.start + ast.start !== index)
+            return
 
-    let result: Selection |undefined
-    traverse(ast.js.root, {
-      enter(path) {
-        if (result)
-          return
-        if (path.node.end == null)
-          return
-        if (path.node.start !== index)
-          return
+          if (!supported.includes(path.node.type)) {
+            log.debug('Unsupported node type:', path.node.type)
+            return
+          }
 
-        if (!supported.includes(path.node.type)) {
-          log.debug('Unsupported node type:', path.node.type)
-          return
-        }
+          result = new Selection(
+            doc.positionAt(ast.start + path.node.start),
+            doc.positionAt(ast.start + path.node.end),
+          )
+        },
+      })
 
-        result = new Selection(
-          doc.positionAt(path.node.start),
-          doc.positionAt(path.node.end),
-        )
-      },
-    })
-
-    return result
+      if (result)
+        return result
+    }
   },
 }

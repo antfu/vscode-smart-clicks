@@ -14,7 +14,7 @@ export interface HandlerContext {
   charRight: string
   chars: string[]
   withOffset: (p: Position, offset: number) => Position
-  ast: AstMap
+  ast: AstRoot[]
 }
 
 export interface Handler {
@@ -27,14 +27,21 @@ export interface Parser {
   handle: (context: HandlerContext) => Promise<void> | void
 }
 
-export interface AstRoot<T> {
-  offset: number
-  root?: T
+export interface AstBase {
+  start: number
+  end: number
+  raw: string
+  id: string
 }
 
-export interface AstMap {
-  // TODO:
-  html?: AstRoot<AstRootHTML>
-  js?: AstRoot<AstRootJS<any>>
-  css?: AstRoot<any>
+export interface AstJS extends AstBase {
+  type: 'js'
+  root: AstRootJS<any>
 }
+
+export interface AstHTML extends AstBase {
+  type: 'html'
+  root: AstRootHTML
+}
+
+export type AstRoot = AstHTML | AstJS

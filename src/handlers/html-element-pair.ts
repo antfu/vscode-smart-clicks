@@ -10,8 +10,9 @@ import type { Handler } from '../types'
  */
 export const htmlElementPairHandler: Handler = {
   name: 'html-element-pair',
-  handle({ ast, selection, doc, withOffset }) {
-    if (!ast.html?.root)
+  handle({ ast, selection, doc, withOffset, anchorIndex }) {
+    const asts = ast.filter(i => i.type === 'js' && i.start <= anchorIndex && i.end >= anchorIndex)
+    if (!asts.length)
       return
 
     const selectionText = doc.getText(selection)
@@ -26,41 +27,43 @@ export const htmlElementPairHandler: Handler = {
     if (postIndex < 0 && preIndex < 0)
       return
 
-    for (const node of traverseHTML(ast.html.root)) {
-      if (node.rawTagName !== selectionText || !('isVoidElement' in node) || node.isVoidElement)
-        continue
+    for (const ast of asts) {
+      for (const node of traverseHTML(ast.root)) {
+        if (node.rawTagName !== selectionText || !('isVoidElement' in node) || node.isVoidElement)
+          continue
 
-      // from start tag to end tag
-      if (node.range[0] === preIndex) {
-        const body = doc.getText(new Range(
-          preCharPos,
-          doc.positionAt(node.range[1]),
-        ))
+        // from start tag to end tag
+        if (node.range[0] + ast.start === preIndex) {
+          const body = doc.getText(new Range(
+            preCharPos,
+            doc.positionAt(node.range[1] + ast.start),
+          ))
 
-        if (body.trimEnd().endsWith('/>'))
-          return selection
+          if (body.trimEnd().endsWith('/>'))
+            return selection
 
-        const endIndex = body.lastIndexOf(`</${node.rawTagName}>`)
-        if (endIndex) {
+          const endIndex = body.lastIndexOf(`</${node.rawTagName}>`)
+          if (endIndex) {
+            return [
+              selection,
+              new Selection(
+                doc.positionAt(preIndex + endIndex + 2),
+                doc.positionAt(preIndex + endIndex + 2 + node.rawTagName.length),
+              ),
+            ]
+          }
+        }
+
+        // from end tag to start tag
+        if (node.range[1] === postIndex) {
           return [
-            selection,
             new Selection(
-              doc.positionAt(preIndex + endIndex + 2),
-              doc.positionAt(preIndex + endIndex + 2 + node.rawTagName.length),
+              doc.positionAt(node.range[0] + 1),
+              doc.positionAt(node.range[0] + 1 + node.rawTagName.length),
             ),
+            selection,
           ]
         }
-      }
-
-      // from end tag to start tag
-      if (node.range[1] === postIndex) {
-        return [
-          new Selection(
-            doc.positionAt(node.range[0] + 1),
-            doc.positionAt(node.range[0] + 1 + node.rawTagName.length),
-          ),
-          selection,
-        ]
       }
     }
   },
