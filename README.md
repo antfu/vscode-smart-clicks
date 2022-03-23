@@ -12,6 +12,10 @@ The better smart selection with double clicks for VS Code.
   </a>
 </p>
 
+## Credits
+
+Inspired by [HBuilderX](https://www.dcloud.io/hbuilderx.html), initiated by [恐粉龙](https://space.bilibili.com/432190144).
+
 ## License
 
 [MIT](./LICENSE) License © 2021 [Anthony Fu](https://github.com/antfu)
