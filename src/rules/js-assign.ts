@@ -10,7 +10,7 @@ const supportedNodeType = [
 ]
 
 /**
- * Matches JavaScript assignment with equal sign
+ * `=` to assignment.
  *
  * ```js
  *         ▽

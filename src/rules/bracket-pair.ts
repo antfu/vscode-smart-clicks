@@ -12,7 +12,7 @@ const bracketPairs: [left: string, right: string, inset: boolean][] = [
 ]
 
 /**
- * Matches the content of bracket pairs
+ * Bracket pairs.
  *
  * ```js
  * ▽
@@ -20,10 +20,10 @@ const bracketPairs: [left: string, right: string, inset: boolean][] = [
  *  └──────┘
  * ```
  *
- * @name brackets-pair
+ * @name bracket-pair
  */
-export const bracketsPairHandler: Handler = {
-  name: 'brackets-pair',
+export const bracketPairHandler: Handler = {
+  name: 'bracket-pair',
   handle({ charLeft, charRight, doc, anchor: _anchor, withOffset }) {
     for (const DIR of [1, -1]) {
       const OPEN = DIR === 1 ? 0 : 1

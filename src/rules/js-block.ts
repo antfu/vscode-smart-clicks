@@ -20,7 +20,7 @@ const supportedNodeType = [
 ]
 
 /**
- * Matches JavaScript blocks like `if`, `for`, `while`, etc.
+ * Blocks like `if`, `for`, `while`, etc. in JavaScript.
  *
  * ```js
  * ▽
@@ -34,11 +34,11 @@ const supportedNodeType = [
  * └───────────────────────┘
  * ```
  *
- * @name js-blocks
+ * @name js-block
  * @category js
  */
-export const jsBlocksHandler: Handler = {
-  name: 'js-blocks',
+export const jsBlockHandler: Handler = {
+  name: 'js-block',
   handle({ selection, doc, getAst }) {
     for (const ast of getAst('js')) {
       const index = doc.offsetAt(selection.start)
@@ -54,7 +54,7 @@ export const jsBlocksHandler: Handler = {
             return
 
           if (!supportedNodeType.includes(path.node.type)) {
-            log.debug('[js-blocks] Unknown type:', path.node.type)
+            log.debug('[js-block] Unknown type:', path.node.type)
             return
           }
 

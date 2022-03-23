@@ -1,27 +1,27 @@
 import type { Handler, HandlerContext } from '../types'
-import { bracketsPairHandler } from './brackets-pair'
+import { bracketPairHandler } from './bracket-pair'
 import { dashHandler } from './dash'
-import { htmlBlocksHandler } from './html-blocks'
-import { htmlElementPairHandler } from './html-element-pair'
+import { htmlElementHandler } from './html-element'
+import { htmlTagPairHandler } from './html-tag-pair'
 import { jsArrowFnHandler } from './js-arrow-fn'
 import { jsAssginHandler } from './js-assign'
-import { jsBlocksHandler } from './js-blocks'
-import { jsxElementPairHandler } from './jsx-element-pair'
+import { jsBlockHandler } from './js-block'
+import { jsxTagPairHandler } from './jsx-tag-pair'
 
 export const handlers: Handler[] = [
   // html
-  htmlElementPairHandler,
-  htmlBlocksHandler,
+  htmlTagPairHandler,
+  htmlElementHandler,
 
   // js
-  jsxElementPairHandler,
+  jsxTagPairHandler,
   jsArrowFnHandler,
-  jsBlocksHandler,
+  jsBlockHandler,
   jsAssginHandler,
 
   // general
   dashHandler,
-  bracketsPairHandler,
+  bracketPairHandler,
 ]
 
 export function applyHandlers(context: HandlerContext) {

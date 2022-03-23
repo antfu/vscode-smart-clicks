@@ -3,7 +3,7 @@ import { traverseHTML } from '../parsers/html'
 import type { Handler } from '../types'
 
 /**
- * Matches the entire element by clicking the leading `<`.
+ * `<` to the entire element.
  *
  * ```html
  * ▽
@@ -14,8 +14,8 @@ import type { Handler } from '../types'
  * @name html-blocks
  * @category html
  */
-export const htmlBlocksHandler: Handler = {
-  name: 'html-blocks',
+export const htmlElementHandler: Handler = {
+  name: 'html-element',
   handle({ getAst, doc, char, anchorIndex }) {
     const asts = getAst('html')
     if (!asts.length)

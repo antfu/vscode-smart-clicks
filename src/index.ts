@@ -1,7 +1,7 @@
 import type { ExtensionContext, Selection, TextEditor } from 'vscode'
 import { TextEditorSelectionChangeKind, window, workspace } from 'vscode'
 import { toArray } from '@antfu/utils'
-import { applyHandlers } from './handlers'
+import { applyHandlers } from './rules'
 import { applyParser } from './parsers'
 import type { AstRoot } from './types'
 import { toSelection } from './utils'

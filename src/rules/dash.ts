@@ -1,7 +1,7 @@
 import type { Handler } from '../types'
 
 /**
- * Match identifier with dashes
+ * `-` to identifier.
  *
  * ```css
  *    ▽

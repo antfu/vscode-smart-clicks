@@ -21,9 +21,9 @@ Double clicks on the code.
 
 <!-- Generated from JSDocs, do not modify it directly -->
 <!--rules-->
-#### [`brackets-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/brackets-pair.ts)
+#### [`bracket-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/bracket-pair.ts)
 
-Matches the content of bracket pairs
+Bracket pairs.
 
 ```js
 ▽
@@ -31,9 +31,9 @@ Matches the content of bracket pairs
  └──────┘
 ```
 
-#### [`dash`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/dash.ts)
+#### [`dash`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/dash.ts)
 
-Match identifier with dashes
+`-` to identifier.
 
 ```css
    ▽
@@ -41,9 +41,9 @@ foo-bar
 └─────┘
 ```
 
-#### [`html-blocks`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/html-blocks.ts)
+#### [`html-blocks`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/html-element.ts)
 
-Matches the entire element by clicking the leading `<`.
+`<` to the entire element.
 
 ```html
 ▽
@@ -51,9 +51,9 @@ Matches the entire element by clicking the leading `<`.
 └────────────────────┘
 ```
 
-#### [`html-element-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/html-element-pair.ts)
+#### [`html-tag-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/html-tag-pair.ts)
 
-Matches open and close tag name of a HTML element.
+Open and close tags of a HTML element.
 
 ```html
  ▽
@@ -61,9 +61,19 @@ Matches open and close tag name of a HTML element.
  └─┘              └─┘
 ```
 
-#### [`js-assign`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/js-assign.ts)
+#### [`js-arrow-fn`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/js-arrow-fn.ts)
 
-Matches JavaScript assignment with equal sign
+`=>` to arrow function.
+
+```js
+       ▽
+(a, b) => a + b
+└─────────────┘
+```
+
+#### [`js-assign`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/js-assign.ts)
+
+`=` to assignment.
 
 ```js
         ▽
@@ -71,9 +81,9 @@ const a = []
 └──────────┘
 ```
 
-#### [`js-blocks`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/js-blocks.ts)
+#### [`js-block`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/js-block.ts)
 
-Matches JavaScript blocks like `if`, `for`, `while`, etc.
+Blocks like `if`, `for`, `while`, etc. in JavaScript.
 
 ```js
 ▽
@@ -87,9 +97,9 @@ import { ref } from 'vue'
 └───────────────────────┘
 ```
 
-#### [`jsx-element-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/jsx-element-pair.ts)
+#### [`jsx-tag-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/jsx-tag-pair.ts)
 
-Matches JSX Element's start and end tag.
+Matches JSX elements' start and end tags.
 
 ```jsx
   ▽

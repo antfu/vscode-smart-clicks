@@ -3,7 +3,7 @@ import { Selection } from 'vscode'
 import type { Handler } from '../types'
 
 /**
- * Matches JSX Element's start and end tag.
+ * Matches JSX elements' start and end tags.
  *
  * ```jsx
  *   ▽
@@ -11,11 +11,11 @@ import type { Handler } from '../types'
  *   └───────┘     └───────┘
  * ```
  *
- * @name jsx-element-pair
+ * @name jsx-tag-pair
  * @category js
  */
-export const jsxElementPairHandler: Handler = {
-  name: 'jsx-element-pair',
+export const jsxTagPairHandler: Handler = {
+  name: 'jsx-tag-pair',
   handle({ selection, doc, getAst }) {
     for (const ast of getAst('js')) {
       const index = doc.offsetAt(selection.start)

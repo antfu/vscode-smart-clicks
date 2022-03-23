@@ -3,7 +3,7 @@ import { traverseHTML } from '../parsers/html'
 import type { Handler } from '../types'
 
 /**
- * Matches open and close tag name of a HTML element.
+ * Open and close tags of a HTML element.
  *
  * ```html
  *  ▽
@@ -11,11 +11,11 @@ import type { Handler } from '../types'
  *  └─┘              └─┘
  * ```
  *
- * @name html-element-pair
+ * @name html-tag-pair
  * @category html
  */
-export const htmlElementPairHandler: Handler = {
-  name: 'html-element-pair',
+export const htmlTagPairHandler: Handler = {
+  name: 'html-tag-pair',
   handle({ getAst, selection, doc, withOffset }) {
     const asts = getAst('html')
     if (!asts.length)

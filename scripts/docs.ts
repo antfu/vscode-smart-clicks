@@ -12,9 +12,11 @@ const GITHUB_URL = 'https://github.com/antfu/vscode-smart-clicks/blob/main/'
 
 async function run() {
   let readme = await fs.readFile('README.md', 'utf-8')
-  const files = await fg('src/handlers/*.ts', {
+  const files = await fg('src/rules/*.ts', {
     ignore: ['index.ts'],
   })
+
+  files.sort()
 
   const parsed: Parsed[] = []
 
