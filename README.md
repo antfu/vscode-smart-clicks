@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://raw.githubusercontent.com/antfu/vscode-smart-clicks/main/res/icon.png" height="120">
+<img src="https://raw.githubusercontent.com/antfu/vscode-smart-clicks/main/res/icon.png" height="150">
 </p>
 
 <h1 align="center">Smart Clicks <sup>VS Code</sup></h1>
