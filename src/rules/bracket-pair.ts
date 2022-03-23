@@ -12,7 +12,7 @@ const bracketPairs: [left: string, right: string, inset: boolean][] = [
 ]
 
 /**
- * Bracket pairs.
+ * Pair to inner content of brackets.
  *
  * ```js
  * ▽

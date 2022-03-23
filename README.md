@@ -23,7 +23,7 @@ Double clicks on the code.
 <!--rules-->
 #### [`bracket-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/bracket-pair.ts)
 
-Bracket pairs.
+Pair to inner content of brackets.
 
 ```js
 ▽
