@@ -13,9 +13,9 @@ const supportedNodeType = [
  * Matches JavaScript assignment with equal sign
  *
  * ```js
- *         v
+ *         ▽
  * const a = []
- * ^          ^
+ * └──────────┘
  * ```
  *
  * @name js-assign

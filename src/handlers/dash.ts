@@ -4,9 +4,9 @@ import type { Handler } from '../types'
  * Match identifier with dashes
  *
  * ```css
- *    v
+ *    ▽
  * foo-bar
- * ^     ^
+ * └─────┘
  * ```
  *
  * @name dash

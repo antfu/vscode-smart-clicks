@@ -8,7 +8,7 @@ import type { Handler } from '../types'
  * ```html
  *  v
  * <div><div></div></div>
- *  ^^^              ^^^
+ *  └─┘              └─┘
  * ```
  *
  * @name html-element-pair

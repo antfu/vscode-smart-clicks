@@ -26,9 +26,9 @@ Double clicks on the code.
 Matches the content of bracket pairs
 
 ```js
-v
+▽
 (foo, bar)
- ^      ^
+ └──────┘
 ```
 
 #### [`dash`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/dash.ts)
@@ -36,9 +36,9 @@ v
 Match identifier with dashes
 
 ```css
-   v
+   ▽
 foo-bar
-^     ^
+└─────┘
 ```
 
 #### [`html-blocks`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/html-blocks.ts)
@@ -46,9 +46,9 @@ foo-bar
 Matches the entire element by clicking the leading `<`.
 
 ```html
-v
+▽
 <div><div></div></div>
-^                    ^
+└────────────────────┘
 ```
 
 #### [`html-element-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/html-element-pair.ts)
@@ -58,7 +58,7 @@ Matches open and close tag name of a HTML element.
 ```html
  v
 <div><div></div></div>
- ^^^              ^^^
+ └─┘              └─┘
 ```
 
 #### [`js-assign`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/js-assign.ts)
@@ -66,9 +66,9 @@ Matches open and close tag name of a HTML element.
 Matches JavaScript assignment with equal sign
 
 ```js
-        v
+        ▽
 const a = []
-^          ^
+└──────────┘
 ```
 
 #### [`js-blocks`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/js-blocks.ts)
@@ -76,15 +76,15 @@ const a = []
 Matches JavaScript blocks like `if`, `for`, `while`, etc.
 
 ```js
-v
+▽
 function () {     }
-^                 ^
+└─────────────────┘
 ```
 
 ```js
-v
+▽
 import { ref } from 'vue'
-^                       ^
+└───────────────────────┘
 ```
 
 #### [`jsx-element-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/jsx-element-pair.ts)
@@ -92,9 +92,9 @@ import { ref } from 'vue'
 Matches JSX Element's start and end tag.
 
 ```jsx
- v
-<Flex.Item>Hi</Flex.Item>
- ^       ^     ^       ^
+  ▽
+(<Flex.Item>Hi</Flex.Item>)
+  └───────┘     └───────┘
 ```
 <!--rules-->
 

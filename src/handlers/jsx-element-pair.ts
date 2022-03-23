@@ -6,9 +6,9 @@ import type { Handler } from '../types'
  * Matches JSX Element's start and end tag.
  *
  * ```jsx
- *  v
- * <Flex.Item>Hi</Flex.Item>
- *  ^       ^     ^       ^
+ *   ▽
+ * (<Flex.Item>Hi</Flex.Item>)
+ *   └───────┘     └───────┘
  * ```
  *
  * @name jsx-element-pair

@@ -23,15 +23,15 @@ const supportedNodeType = [
  * Matches JavaScript blocks like `if`, `for`, `while`, etc.
  *
  * ```js
- * v
+ * ▽
  * function () {     }
- * ^                 ^
+ * └─────────────────┘
  * ```
  *
  * ```js
- * v
+ * ▽
  * import { ref } from 'vue'
- * ^                       ^
+ * └───────────────────────┘
  * ```
  *
  * @name js-blocks

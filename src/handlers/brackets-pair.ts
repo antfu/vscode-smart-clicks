@@ -15,9 +15,9 @@ const bracketPairs: [left: string, right: string, inset: boolean][] = [
  * Matches the content of bracket pairs
  *
  * ```js
- * v
+ * ▽
  * (foo, bar)
- *  ^      ^
+ *  └──────┘
  * ```
  *
  * @name brackets-pair

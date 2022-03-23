@@ -6,9 +6,9 @@ import type { Handler } from '../types'
  * Matches the entire element by clicking the leading `<`.
  *
  * ```html
- * v
+ * ▽
  * <div><div></div></div>
- * ^                    ^
+ * └────────────────────┘
  * ```
  *
  * @name html-blocks
