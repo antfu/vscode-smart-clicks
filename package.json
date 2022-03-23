@@ -1,19 +1,19 @@
 {
-  "name": "smart-click",
+  "name": "smart-clicks",
   "displayName": "Smart Clicks",
   "version": "0.0.0",
   "publisher": "antfu",
   "packageManager": "pnpm@6.32.3",
   "description": "Smart selection with double clicks",
-  "homepage": "https://github.com/antfu/vscode-smart-click#readme",
+  "homepage": "https://github.com/antfu/vscode-smart-clicks#readme",
   "bugs": {
-    "url": "https://github.com/antfu/vscode-smart-click/issues"
+    "url": "https://github.com/antfu/vscode-smart-clicks/issues"
   },
   "license": "MIT",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antfu/vscode-smart-click"
+    "url": "https://github.com/antfu/vscode-smart-clicks"
   },
   "funding": "https://github.com/sponsors/antfu",
   "main": "./dist/index.js",
