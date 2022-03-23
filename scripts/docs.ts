@@ -22,7 +22,7 @@ async function run() {
       continue
     const info = {} as Parsed
     const lines = match.split('\n')
-      .map(i => i.replace(/^\s*[\/*]*\s*/, '').trim())
+      .map(i => i.replace(/^\s*[\/*]+\s?/, '').trimEnd())
       .filter((i) => {
         if (i.startsWith('@name ')) {
           info.name = i.slice(6)
@@ -32,9 +32,9 @@ async function run() {
           info.category = i.slice('@category '.length)
           return false
         }
-        return Boolean(i)
+        return true
       })
-    info.content = lines.join('\n')
+    info.content = lines.join('\n').trim()
     parsed.push(info)
   }
 

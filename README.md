@@ -25,17 +25,39 @@ Double clicks on the code.
 
 Matches the content of bracket pairs
 
+```js
+v
+(          )
+ ^        ^
+```
+
 #### `dash`
 
 Match identifier with dashes
 
 #### `html-element-pair`
 
-Matches open and close tag name of a HTMl element.
+Matches open and close tag name of a HTML element.
+
+#### `js-assign`
+
+Matches JavaScript assignment.
+
+```js
+        v
+const a = []
+^          ^
+```
 
 #### `js-blocks`
 
-Matches JavaScript blocks like if, for, while, etc.
+Matches JavaScript blocks like `if`, `for`, `while`, etc.
+
+```js
+v
+function () {     }
+^                 ^
+```
 <!--rules-->
 
 ## Sponsors

@@ -40,7 +40,8 @@
     "pack": "vsce package --no-dependencies --allow-star-activation",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "release": "bumpp --commit --push --tag && nr publish"
+    "release": "bumpp --commit --push --tag && nr publish",
+    "readme": "esno ./scripts/docs.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.8",

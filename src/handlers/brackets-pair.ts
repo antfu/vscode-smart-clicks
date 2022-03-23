@@ -14,6 +14,12 @@ const bracketPairs: [left: string, right: string, inset: boolean][] = [
 /**
  * Matches the content of bracket pairs
  *
+ * ```js
+ * v
+ * (          )
+ *  ^        ^
+ * ```
+ *
  * @name brackets-pair
  */
 export const bracketsPairHandler: Handler = {

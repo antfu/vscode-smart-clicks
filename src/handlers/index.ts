@@ -2,6 +2,7 @@ import type { Handler, HandlerContext } from '../types'
 import { bracketsPairHandler } from './brackets-pair'
 import { dashHandler } from './dash'
 import { htmlElementPairHandler } from './html-element-pair'
+import { jsAssginHandler } from './js-assign'
 import { jsBlocksHandler } from './js-blocks'
 
 export const handlers: Handler[] = [
@@ -10,6 +11,7 @@ export const handlers: Handler[] = [
 
   // js
   jsBlocksHandler,
+  jsAssginHandler,
 
   // general
   dashHandler,

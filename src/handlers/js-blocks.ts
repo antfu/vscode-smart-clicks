@@ -3,52 +3,52 @@ import { Selection } from 'vscode'
 import { log } from '../log'
 import type { Handler } from '../types'
 
+const supportedNodeType = [
+  'ClassDeclaration',
+  'DoWhileStatement',
+  'ExportAllDeclaration',
+  'ExportDefaultDeclaration',
+  'ExportNamedDeclaration',
+  'ForStatement',
+  'FunctionDeclaration',
+  'IfStatement',
+  'ImportDeclaration',
+  'SwitchStatement',
+  'TryStatement',
+  'TSInterfaceDeclaration',
+  'WhileStatement',
+]
+
 /**
- * Matches JavaScript blocks like if, for, while, etc.
+ * Matches JavaScript blocks like `if`, `for`, `while`, etc.
+ *
+ * ```js
+ * v
+ * function () {     }
+ * ^                 ^
+ * ```
  *
  * @name js-blocks
  * @category js
  */
 export const jsBlocksHandler: Handler = {
   name: 'js-blocks',
-  handle({ ast, selection, doc, anchorIndex }) {
-    const asts = ast.filter(i => i.type === 'js' && i.start <= anchorIndex && i.end >= anchorIndex)
-    if (!asts.length)
-      return
-
-    for (const ast of asts) {
+  handle({ selection, doc, getAst }) {
+    for (const ast of getAst('js')) {
       const index = doc.offsetAt(selection.start)
-      const supported = [
-        'ClassDeclaration',
-        'DoWhileStatement',
-        'ExportAllDeclaration',
-        'ExportDefaultDeclaration',
-        'ExportNamedDeclaration',
-        'ForStatement',
-        'FunctionDeclaration',
-        'IfStatement',
-        'ImportDeclaration',
-        'SwitchStatement',
-        'TryStatement',
-        'TSInterfaceDeclaration',
-        // TODO: support declartions on equal sign
-        // 'TSTypeAliasDeclaration',
-        // 'VariableDeclaration',
-        'WhileStatement',
-      ]
 
       let result: Selection |undefined
       traverse(ast.root, {
         enter(path) {
           if (result)
-            return
+            return path.skip()
           if (path.node.start == null || path.node.end == null)
             return
           if (path.node.start + ast.start !== index)
             return
 
-          if (!supported.includes(path.node.type)) {
-            log.debug('Unsupported node type:', path.node.type)
+          if (!supportedNodeType.includes(path.node.type)) {
+            log.debug('[js-blocks] Unknown type:', path.node.type)
             return
           }
 
