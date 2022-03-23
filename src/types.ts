@@ -1,10 +1,13 @@
+import type { Program as AstRootJS } from '@babel/types'
 import type { Position, Range, Selection, TextDocument, TextEditor } from 'vscode'
+import type { HTMLElement as AstRootHTML } from 'node-html-parser'
 
 export interface HandlerContext {
   doc: TextDocument
   editor: TextEditor
   langId: string
   anchor: Position
+  anchorIndex: number
   selection: Selection
   char: string
   charLeft: string
@@ -16,7 +19,7 @@ export interface HandlerContext {
 
 export interface Handler {
   name: string
-  handle: (context: HandlerContext) => Selection | Range | undefined
+  handle: (context: HandlerContext) => Selection | Range | Selection[] | Range [] | void
 }
 
 export interface Parser {
@@ -26,12 +29,12 @@ export interface Parser {
 
 export interface AstRoot<T> {
   offset: number
-  root: T
+  root?: T
 }
 
 export interface AstMap {
   // TODO:
-  html?: AstRoot<any>
-  js?: AstRoot<any>
+  html?: AstRoot<AstRootHTML>
+  js?: AstRoot<AstRootJS>
   css?: AstRoot<any>
 }

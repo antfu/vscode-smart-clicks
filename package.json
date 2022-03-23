@@ -1,20 +1,20 @@
 {
-  "name": "double-click",
-  "displayName": "Smart double click for VS Code",
+  "name": "smart-click",
+  "displayName": "Smart double click selection for VS Code",
   "version": "0.0.0",
   "publisher": "antfu",
   "packageManager": "pnpm@6.32.3",
   "description": "",
   "keywords": [],
-  "homepage": "https://github.com/antfu/vscode-double-click#readme",
+  "homepage": "https://github.com/antfu/vscode-smart-click#readme",
   "bugs": {
-    "url": "https://github.com/antfu/vscode-double-click/issues"
+    "url": "https://github.com/antfu/vscode-smart-click/issues"
   },
   "license": "MIT",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/antfu/vscode-double-click"
+    "url": "https://github.com/antfu/vscode-smart-click"
   },
   "funding": "https://github.com/sponsors/antfu",
   "main": "./dist/index.js",
@@ -46,12 +46,17 @@
   "devDependencies": {
     "@antfu/eslint-config": "^0.18.8",
     "@antfu/ni": "^0.13.2",
+    "@antfu/utils": "^0.5.0",
+    "@babel/core": "^7.17.8",
     "@babel/types": "^7.17.0",
+    "@types/babel__core": "^7.1.19",
     "@types/node": "^17.0.21",
     "@types/vscode": "^1.65.0",
     "bumpp": "^7.1.1",
     "eslint": "^8.11.0",
     "esno": "^0.14.1",
+    "htmlparser2": "^7.2.0",
+    "node-html-parser": "^5.3.3",
     "pnpm": "^6.32.3",
     "rimraf": "^3.0.2",
     "tsup": "^5.12.1",

@@ -1,8 +1,11 @@
-import type { ExtensionContext, Position, TextEditor } from 'vscode'
-import { Range, Selection, TextEditorSelectionChangeKind, window, workspace } from 'vscode'
+import type { ExtensionContext, Position, Selection, TextEditor } from 'vscode'
+import { Range, TextEditorSelectionChangeKind, window, workspace } from 'vscode'
+import { toArray } from '@antfu/utils'
 import { applyHandlers } from './handlers'
 import { applyParser } from './parsers'
 import type { AstMap, HandlerContext } from './types'
+import { toSelection } from './utils'
+import { log } from './log'
 
 export function activate(ext: ExtensionContext) {
   let last = Date.now()
@@ -12,7 +15,6 @@ export function activate(ext: ExtensionContext) {
   const astCache = new Map<string, AstMap>()
 
   ext.subscriptions.push(
-
     workspace.onDidChangeTextDocument((e) => {
       astCache.delete(e.document.uri.fsPath)
     }),
@@ -72,6 +74,7 @@ export function activate(ext: ExtensionContext) {
         doc,
         langId: doc.languageId,
         anchor,
+        anchorIndex: doc.offsetAt(anchor),
         selection,
         withOffset,
         char,
@@ -81,17 +84,15 @@ export function activate(ext: ExtensionContext) {
         ast: astCache.get(doc.uri.fsPath)!,
       }
 
+      log.debug('trigger', context)
+
       update()
 
       await applyParser(context)
 
       const newSelection = applyHandlers(context)
-      if (newSelection) {
-        if (newSelection instanceof Range)
-          editor.selection = new Selection(newSelection.start, newSelection.end)
-        else
-          editor.selection = newSelection
-      }
+      if (newSelection)
+        editor.selections = toArray(newSelection).map(toSelection)
     }),
   )
 }

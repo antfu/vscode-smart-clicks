@@ -1,10 +1,14 @@
 import type { Handler, HandlerContext } from '../types'
-import { bracketHandler } from './brackets'
+import { bracketsPairHandler } from './brackets-pair'
 import { dashHandler } from './dash'
+import { htmlElementPairHandler } from './html-element-pair'
 
 export const handlers: Handler[] = [
+  htmlElementPairHandler,
+
+  // general
   dashHandler,
-  bracketHandler,
+  bracketsPairHandler,
 ]
 
 export function applyHandlers(context: HandlerContext) {
