@@ -6,7 +6,24 @@ Smart selection with double clicks for VS Code.
 
 ## Rules
 
-> TODO:
+<!-- Generated from JSDocs, do not modify it directly -->
+<!--rules-->
+#### `brackets-pair`
+
+Matches the content of bracket pairs
+
+#### `dash`
+
+Match identifier with dashes
+
+#### `html-element-pair`
+
+Matches open and close tag name of a HTMl element.
+
+#### `js-blocks`
+
+Matches JavaScript blocks like if, for, while, etc.
+<!--rules-->
 
 ## Sponsors
 
