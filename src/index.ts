@@ -11,7 +11,7 @@ import { createContext } from './context'
 export const astCache = new Map<string, AstRoot[]>()
 
 export function activate(ext: ExtensionContext) {
-  let last = Date.now()
+  let last = 0
   let prevEditor: TextEditor | undefined
   let prevSelection: Selection | undefined
 
@@ -57,8 +57,10 @@ export function activate(ext: ExtensionContext) {
       await applyParser(context)
 
       const newSelection = applyHandlers(context)
-      if (newSelection)
+      if (newSelection) {
+        last = 0
         e.textEditor.selections = toArray(newSelection).map(toSelection)
+      }
     }),
   )
 }
