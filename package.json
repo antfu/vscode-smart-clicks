@@ -1,11 +1,10 @@
 {
   "name": "smart-click",
-  "displayName": "Smart double click selection for VS Code",
+  "displayName": "Smart Clicks",
   "version": "0.0.0",
   "publisher": "antfu",
   "packageManager": "pnpm@6.32.3",
-  "description": "",
-  "keywords": [],
+  "description": "Smart selection with double clicks",
   "homepage": "https://github.com/antfu/vscode-smart-click#readme",
   "bugs": {
     "url": "https://github.com/antfu/vscode-smart-click/issues"

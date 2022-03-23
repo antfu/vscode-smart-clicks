@@ -1,8 +1,12 @@
-# vscode-smart-click
+# Smart Clicks VS Code
 
 [![NPM version](https://img.shields.io/npm/v/vscode-smart-click?color=a1b858&label=)](https://www.npmjs.com/package/vscode-smart-click)
 
-The better smart selection with double clicks for VS Code.
+Smart selection with double clicks for VS Code.
+
+## Rules
+
+> TODO:
 
 ## Sponsors
 
