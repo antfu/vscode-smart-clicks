@@ -1,0 +1,63 @@
+{
+  "name": "double-click",
+  "displayName": "Smart double click for VS Code",
+  "version": "0.0.0",
+  "publisher": "antfu",
+  "packageManager": "pnpm@6.32.3",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/antfu/vscode-double-click#readme",
+  "bugs": {
+    "url": "https://github.com/antfu/vscode-double-click/issues"
+  },
+  "license": "MIT",
+  "author": "Anthony Fu <anthonyfu117@hotmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/antfu/vscode-double-click"
+  },
+  "funding": "https://github.com/sponsors/antfu",
+  "main": "./dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "vscode": "^1.65.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "icon": "res/icon.png",
+  "scripts": {
+    "build": "tsup src/index.ts --external vscode",
+    "dev": "nr build --watch",
+    "lint": "eslint .",
+    "vscode:prepublish": "nr build",
+    "publish": "vsce publish --no-dependencies --allow-star-activation",
+    "pack": "vsce package --no-dependencies --allow-star-activation",
+    "test": "vitest",
+    "typecheck": "tsc --noEmit",
+    "release": "bumpp --commit --push --tag && nr publish"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.18.8",
+    "@antfu/ni": "^0.13.2",
+    "@babel/types": "^7.17.0",
+    "@types/node": "^17.0.21",
+    "@types/vscode": "^1.65.0",
+    "bumpp": "^7.1.1",
+    "eslint": "^8.11.0",
+    "esno": "^0.14.1",
+    "pnpm": "^6.32.3",
+    "rimraf": "^3.0.2",
+    "tsup": "^5.12.1",
+    "typescript": "^4.6.2",
+    "vite": "^2.8.6",
+    "vitest": "^0.7.4",
+    "vsce": "^2.7.0"
+  }
+}
