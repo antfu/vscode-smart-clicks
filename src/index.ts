@@ -14,6 +14,7 @@ export function activate(ext: ExtensionContext) {
   let last = 0
   let prevEditor: TextEditor | undefined
   let prevSelection: Selection | undefined
+  let timer: any
 
   ext.subscriptions.push(
     workspace.onDidChangeTextDocument((e) => {
@@ -21,6 +22,7 @@ export function activate(ext: ExtensionContext) {
     }),
 
     window.onDidChangeTextEditorSelection(async(e) => {
+      clearTimeout(timer)
       if (e.kind !== TextEditorSelectionChangeKind.Mouse)
         return
 
@@ -39,7 +41,8 @@ export function activate(ext: ExtensionContext) {
       // selection
       if (
         e.selections.length !== 1
-        || !prevSelection?.isEmpty
+        || !prevSelection
+        || !prevSelection.isEmpty
         || selection.start.line !== prevSelection.start.line
       )
         return update()
@@ -47,20 +50,22 @@ export function activate(ext: ExtensionContext) {
       if (Date.now() - last > 1000)
         return update()
 
-      const context = createContext(e, prevSelection, selection)
+      timer = setTimeout(async() => {
+        const context = createContext(e, prevSelection!, selection)
 
-      log.debug('trigger')
-      log.debug(context)
+        log.debug('trigger')
+        log.debug(context)
 
-      update()
+        update()
 
-      await applyParser(context)
+        await applyParser(context)
 
-      const newSelection = applyHandlers(context)
-      if (newSelection) {
-        last = 0
-        e.textEditor.selections = toArray(newSelection).map(toSelection)
-      }
+        const newSelection = applyHandlers(context)
+        if (newSelection) {
+          last = 0
+          e.textEditor.selections = toArray(newSelection).map(toSelection)
+        }
+      }, 100)
     }),
   )
 }
