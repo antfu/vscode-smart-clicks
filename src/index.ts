@@ -51,7 +51,8 @@ export function activate(ext: ExtensionContext) {
 
       const context = createContext(e, prevSelection, selection)
 
-      log.debug('trigger', context)
+      log.debug('trigger')
+      log.debug(context)
 
       update()
 
