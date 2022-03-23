@@ -4,12 +4,14 @@ import { dashHandler } from './dash'
 import { htmlElementPairHandler } from './html-element-pair'
 import { jsAssginHandler } from './js-assign'
 import { jsBlocksHandler } from './js-blocks'
+import { jsxElementPairHandler } from './jsx-element-pair'
 
 export const handlers: Handler[] = [
   // html
   htmlElementPairHandler,
 
   // js
+  jsxElementPairHandler,
   jsBlocksHandler,
   jsAssginHandler,
 

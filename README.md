@@ -70,6 +70,22 @@ v
 function () {     }
 ^                 ^
 ```
+
+```js
+v
+import { ref } from 'vue'
+^                       ^
+```
+
+#### [`jsx-element-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/jsx-element-pair.ts)
+
+Matches JSX Element's start and end tag.
+
+```jsx
+ v
+<Flex.Item>Hi</Flex.Item>
+ ^       ^     ^       ^
+```
 <!--rules-->
 
 ## Sponsors

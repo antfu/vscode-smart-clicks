@@ -28,6 +28,12 @@ const supportedNodeType = [
  * ^                 ^
  * ```
  *
+ * ```js
+ * v
+ * import { ref } from 'vue'
+ * ^                       ^
+ * ```
+ *
  * @name js-blocks
  * @category js
  */
