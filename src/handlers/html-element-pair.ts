@@ -3,7 +3,7 @@ import { traverseHTML } from '../parsers/html'
 import type { Handler } from '../types'
 
 /**
- * Matches open and close tag name of a HTMl element.
+ * Matches open and close tag name of a HTML element.
  *
  * @name html-element-pair
  * @category html

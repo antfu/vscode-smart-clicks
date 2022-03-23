@@ -1,8 +1,20 @@
-# Smart Clicks VS Code
+<p align="center">
+<img src="https://raw.githubusercontent.com/antfu/vscode-smart-clicks/main/res/icon.png" height="120">
+</p>
 
-[![NPM version](https://img.shields.io/npm/v/vscode-smart-clicks?color=a1b858&label=)](https://www.npmjs.com/package/vscode-smart-clicks)
+<h1 align="center">Smart Clicks <sup>VS Code</sup></h1>
 
+<p align="center">
+<a href="https://marketplace.visualstudio.com/items?itemName=antfu.smart-clicks" target="__blank"><img src="https://img.shields.io/visual-studio-marketplace/v/smart-clicks.svg?color=eee&amp;label=VS%20Code%20Marketplace&logo=visual-studio-code" alt="Visual Studio Marketplace Version" /></a>
+</p>
+
+<p align="center">
 Smart selection with double clicks for VS Code.
+</p>
+
+## Usage
+
+Double clicks on the code.
 
 ## Rules
 
