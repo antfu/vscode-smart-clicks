@@ -21,25 +21,37 @@ Double clicks on the code.
 
 <!-- Generated from JSDocs, do not modify it directly -->
 <!--rules-->
-#### `brackets-pair`
+#### [`brackets-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/brackets-pair.ts)
 
 Matches the content of bracket pairs
 
 ```js
 v
-(          )
- ^        ^
+(foo, bar)
+ ^      ^
 ```
 
-#### `dash`
+#### [`dash`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/dash.ts)
 
 Match identifier with dashes
 
-#### `html-element-pair`
+```css
+   v
+foo-bar
+^     ^
+```
+
+#### [`html-element-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/html-element-pair.ts)
 
 Matches open and close tag name of a HTML element.
 
-#### `js-assign`
+```html
+ v
+<div><div></div></div>
+ ^^^              ^^^
+```
+
+#### [`js-assign`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/js-assign.ts)
 
 Matches JavaScript assignment with equal sign
 
@@ -49,7 +61,7 @@ const a = []
 ^          ^
 ```
 
-#### `js-blocks`
+#### [`js-blocks`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/handlers/js-blocks.ts)
 
 Matches JavaScript blocks like `if`, `for`, `while`, etc.
 

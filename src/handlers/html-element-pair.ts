@@ -5,6 +5,12 @@ import type { Handler } from '../types'
 /**
  * Matches open and close tag name of a HTML element.
  *
+ * ```html
+ *  v
+ * <div><div></div></div>
+ *  ^^^              ^^^
+ * ```
+ *
  * @name html-element-pair
  * @category html
  */

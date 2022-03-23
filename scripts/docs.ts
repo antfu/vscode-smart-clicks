@@ -5,7 +5,10 @@ interface Parsed {
   name: string
   category?: string
   content: string
+  file: string
 }
+
+const GITHUB_URL = 'https://github.com/antfu/vscode-smart-clicks/blob/main/'
 
 async function run() {
   let readme = await fs.readFile('README.md', 'utf-8')
@@ -20,7 +23,9 @@ async function run() {
     const match = content.match(/\/\*[\s\S]+?\*\//)?.[0]
     if (!match)
       continue
-    const info = {} as Parsed
+    const info = {
+      file,
+    } as Parsed
     const lines = match.split('\n')
       .map(i => i.replace(/^\s*[\/*]+\s?/, '').trimEnd())
       .filter((i) => {
@@ -39,7 +44,7 @@ async function run() {
   }
 
   const content = parsed.map((i) => {
-    return `#### \`${i.name}\`\n\n${i.content}`
+    return `#### [\`${i.name}\`](${GITHUB_URL + i.file})\n\n${i.content}`
   }).join('\n\n')
 
   readme = readme.replace(/<!--rules-->[\s\S]*<!--rules-->/, `<!--rules-->\n${content}\n<!--rules-->`)
