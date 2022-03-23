@@ -13,5 +13,8 @@
     "types": [
       "@babel/types"
     ]
-  }
+  },
+  "exclude": [
+    "playground/**"
+  ]
 }
