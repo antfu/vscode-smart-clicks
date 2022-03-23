@@ -11,15 +11,16 @@ import type { Handler } from '../types'
 export const htmlElementPairHandler: Handler = {
   name: 'html-element-pair',
   handle({ ast, selection, doc, withOffset, anchorIndex }) {
-    const asts = ast.filter(i => i.type === 'js' && i.start <= anchorIndex && i.end >= anchorIndex)
+    const asts = ast.filter(i => i.type === 'html' && i.start <= anchorIndex && i.end >= anchorIndex)
     if (!asts.length)
       return
 
-    const selectionText = doc.getText(selection)
-    const preCharPos = withOffset(selection.start, -1)
-    const preChar = doc.getText(new Range(preCharPos, selection.start))
-    const postCharPos = withOffset(selection.end, 1)
-    const postChar = doc.getText(new Range(selection.end, postCharPos))
+    const range = doc.getWordRangeAtPosition(selection.start, /[\w._-]+/) || selection
+    const rangeText = doc.getText(range)
+    const preCharPos = withOffset(range.start, -1)
+    const preChar = doc.getText(new Range(preCharPos, range.start))
+    const postCharPos = withOffset(range.end, 1)
+    const postChar = doc.getText(new Range(range.end, postCharPos))
 
     const preIndex = preChar === '<' ? doc.offsetAt(preCharPos) : -1
     const postIndex = postChar === '>' ? doc.offsetAt(postCharPos) : -1
@@ -29,7 +30,7 @@ export const htmlElementPairHandler: Handler = {
 
     for (const ast of asts) {
       for (const node of traverseHTML(ast.root)) {
-        if (node.rawTagName !== selectionText || !('isVoidElement' in node) || node.isVoidElement)
+        if (node.rawTagName !== rangeText || !('isVoidElement' in node) || node.isVoidElement)
           continue
 
         // from start tag to end tag
@@ -40,12 +41,12 @@ export const htmlElementPairHandler: Handler = {
           ))
 
           if (body.trimEnd().endsWith('/>'))
-            return selection
+            return range
 
           const endIndex = body.lastIndexOf(`</${node.rawTagName}>`)
           if (endIndex) {
             return [
-              selection,
+              range,
               new Selection(
                 doc.positionAt(preIndex + endIndex + 2),
                 doc.positionAt(preIndex + endIndex + 2 + node.rawTagName.length),
@@ -61,7 +62,7 @@ export const htmlElementPairHandler: Handler = {
               doc.positionAt(node.range[0] + 1),
               doc.positionAt(node.range[0] + 1 + node.rawTagName.length),
             ),
-            selection,
+            range,
           ]
         }
       }
