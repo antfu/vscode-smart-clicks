@@ -1,0 +1,6 @@
+{
+  "smartClicks.rules": {
+    "dash": true,
+    "html-element": true
+  }
+}

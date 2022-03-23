@@ -1,5 +1,6 @@
 import { promises as fs } from 'fs'
 import fg from 'fast-glob'
+import pkg from '../package.json'
 
 interface Parsed {
   name: string
@@ -51,6 +52,18 @@ async function run() {
 
   readme = readme.replace(/<!--rules-->[\s\S]*<!--rules-->/, `<!--rules-->\n${content}\n<!--rules-->`)
   await fs.writeFile('README.md', readme, 'utf-8')
+
+  const props: any = {}
+  parsed.forEach((i) => {
+    props[i.name] = {
+      type: 'boolean',
+      default: true,
+      description: i.content,
+    }
+  })
+
+  pkg.contributes.configuration.properties['smartClicks.rules'].properties = props as any
+  await fs.writeFile('package.json', JSON.stringify(pkg, null, 2), 'utf-8')
 }
 
 run()

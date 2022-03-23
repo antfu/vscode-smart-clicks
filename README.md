@@ -108,6 +108,20 @@ Matches JSX elements' start and end tags.
 ```
 <!--rules-->
 
+## Configuration
+
+All the rules are enabled by default. To disable specific a rule, set the rule to `false` in `smartClicks.rules` of your VS Code settings:
+
+```jsonc
+// settings.json
+{
+  "smartClicks.rules": {
+    "dash": true,
+    "html-element": true
+  }
+}
+```
+
 ## Sponsors
 
 <p align="center">

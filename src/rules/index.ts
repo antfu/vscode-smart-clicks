@@ -1,3 +1,4 @@
+import { workspace } from 'vscode'
 import type { Handler, HandlerContext } from '../types'
 import { bracketPairHandler } from './bracket-pair'
 import { dashHandler } from './dash'
@@ -25,7 +26,12 @@ export const handlers: Handler[] = [
 ]
 
 export function applyHandlers(context: HandlerContext) {
+  const config = workspace.getConfiguration('smartClicks')
+  const rulesOptions = config.get('rules', {}) as any
+
   for (const handler of handlers) {
+    if (rulesOptions[handler.name] === false)
+      continue
     const selection = handler.handle(context)
     if (selection)
       return selection

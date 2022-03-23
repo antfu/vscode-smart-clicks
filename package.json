@@ -31,6 +31,58 @@
     "*"
   ],
   "icon": "res/icon.png",
+  "contributes": {
+    "configuration": {
+      "properties": {
+        "smartClicks.rules": {
+          "type": "object",
+          "properties": {
+            "bracket-pair": {
+              "type": "boolean",
+              "default": true,
+              "description": "Pair to inner content of brackets.\n\n```js\n▽\n(foo, bar)\n └──────┘\n```"
+            },
+            "dash": {
+              "type": "boolean",
+              "default": true,
+              "description": "`-` to identifier.\n\n```css\n   ▽\nfoo-bar\n└─────┘\n```"
+            },
+            "html-element": {
+              "type": "boolean",
+              "default": true,
+              "description": "`<` to the entire element.\n\n```html\n▽\n<div><div></div></div>\n└────────────────────┘\n```"
+            },
+            "html-tag-pair": {
+              "type": "boolean",
+              "default": true,
+              "description": "Open and close tags of a HTML element.\n\n```html\n ▽\n<div><div></div></div>\n └─┘              └─┘\n```"
+            },
+            "js-arrow-fn": {
+              "type": "boolean",
+              "default": true,
+              "description": "`=>` to arrow function.\n\n```js\n       ▽\n(a, b) => a + b\n└─────────────┘\n```"
+            },
+            "js-assign": {
+              "type": "boolean",
+              "default": true,
+              "description": "`=` to assignment.\n\n```js\n        ▽\nconst a = []\n└──────────┘\n```"
+            },
+            "js-block": {
+              "type": "boolean",
+              "default": true,
+              "description": "Blocks like `if`, `for`, `while`, etc. in JavaScript.\n\n```js\n▽\nfunction () {     }\n└─────────────────┘\n```\n\n```js\n▽\nimport { ref } from 'vue'\n└───────────────────────┘\n```"
+            },
+            "jsx-tag-pair": {
+              "type": "boolean",
+              "default": true,
+              "description": "Matches JSX elements' start and end tags.\n\n```jsx\n  ▽\n(<Flex.Item>Hi</Flex.Item>)\n  └───────┘     └───────┘\n```"
+            }
+          },
+          "description": "Rule toggles"
+        }
+      }
+    }
+  },
   "scripts": {
     "build": "tsup src/index.ts --external vscode",
     "dev": "nr build --watch",
