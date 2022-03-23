@@ -38,11 +38,9 @@ export function activate(ext: ExtensionContext) {
 
       // selection
       if (
-        false
-        || e.selections.length !== 1
+        e.selections.length !== 1
         || !prevSelection?.isEmpty
         || selection.start.line !== prevSelection.start.line
-        || selection.end.line !== prevSelection.end.line
       )
         return update()
 
