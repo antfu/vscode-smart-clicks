@@ -29,7 +29,24 @@ export const bracketsPairHandler: Handler = {
 
     const start = withOffset(anchor, 1)
     const rest = doc.getText(new Range(start, new Position(Infinity, Infinity)))
-    const index = rest.indexOf(bracket[1])
+
+    // search for the right bracket
+    let index = -1
+    let curly = 0
+    for (let i = 0; i < rest.length; i++) {
+      const c = rest[i]
+      if (rest[i - 1] === '\\')
+        continue
+      if (c === bracket[0])
+        curly++
+      if (c === bracket[1]) {
+        curly--
+        if (curly < 0) {
+          index = i
+          break
+        }
+      }
+    }
 
     if (index < 0)
       return
