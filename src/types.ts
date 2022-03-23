@@ -15,6 +15,7 @@ export interface HandlerContext {
   chars: string[]
   withOffset: (p: Position, offset: number) => Position
   ast: AstRoot[]
+  getAst<T extends AstLang>(lang: T): AstIdMap[T][]
 }
 
 export interface Handler {
@@ -43,5 +44,12 @@ export interface AstHTML extends AstBase {
   type: 'html'
   root: AstRootHTML
 }
+
+export interface AstIdMap {
+  'js': AstJS
+  'html': AstHTML
+}
+
+export type AstLang = keyof AstIdMap
 
 export type AstRoot = AstHTML | AstJS

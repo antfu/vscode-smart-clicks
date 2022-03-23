@@ -10,8 +10,8 @@ import type { Handler } from '../types'
  */
 export const htmlElementPairHandler: Handler = {
   name: 'html-element-pair',
-  handle({ ast, selection, doc, withOffset, anchorIndex }) {
-    const asts = ast.filter(i => i.type === 'html' && i.start <= anchorIndex && i.end >= anchorIndex)
+  handle({ getAst, selection, doc, withOffset }) {
+    const asts = getAst('html')
     if (!asts.length)
       return
 
