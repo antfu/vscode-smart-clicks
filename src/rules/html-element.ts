@@ -11,7 +11,7 @@ import type { Handler } from '../types'
  * └────────────────────┘
  * ```
  *
- * @name html-blocks
+ * @name html-element
  * @category html
  */
 export const htmlElementHandler: Handler = {

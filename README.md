@@ -41,7 +41,7 @@ foo-bar
 └─────┘
 ```
 
-#### [`html-blocks`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/html-element.ts)
+#### [`html-element`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/html-element.ts)
 
 `<` to the entire element.
 
