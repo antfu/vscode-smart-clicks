@@ -56,7 +56,7 @@ Matches the entire element by clicking the leading `<`.
 Matches open and close tag name of a HTML element.
 
 ```html
- v
+ ▽
 <div><div></div></div>
  └─┘              └─┘
 ```
