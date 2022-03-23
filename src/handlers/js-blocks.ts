@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
-// @ts-ignore mssing types in CI
 import traverse from '@babel/traverse'
 import { Selection } from 'vscode'
 import { log } from '../log'

@@ -33,28 +33,28 @@ jobs:
       - name: Lint
         run: nr lint
 
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+  # typecheck:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2.2.1
+  #     - name: Install pnpm
+  #       uses: pnpm/action-setup@v2.2.1
 
-      - name: Set node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 16.x
-          cache: pnpm
+  #     - name: Set node
+  #       uses: actions/setup-node@v2
+  #       with:
+  #         node-version: 16.x
+  #         cache: pnpm
 
-      - name: Setup
-        run: npm i -g @antfu/ni
+  #     - name: Setup
+  #       run: npm i -g @antfu/ni
 
-      - name: Install
-        run: nci
+  #     - name: Install
+  #       run: nci
 
-      - name: Typecheck
-        run: nr typecheck
+  #     - name: Typecheck
+  #       run: nr typecheck
 
   test:
     runs-on: ${{ matrix.os }}
