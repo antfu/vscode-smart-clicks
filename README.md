@@ -9,7 +9,8 @@
 </p>
 
 <p align="center">
-Smart selection with double clicks for VS Code.
+Smart selection with double clicks for VS Code.<br>
+<a href="https://twitter.com/antfu7/status/1506508822030200833">GIF Demo</a>
 </p>
 
 ## Usage
@@ -51,4 +52,4 @@ Inspired by [HBuilderX](https://www.dcloud.io/hbuilderx.html), initiated by [恐
 
 ## License
 
-[MIT](./LICENSE) License © 2021 [Anthony Fu](https://github.com/antfu)
+[MIT](./LICENSE) License © 2022 [Anthony Fu](https://github.com/antfu)
