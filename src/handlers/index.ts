@@ -3,6 +3,7 @@ import { bracketsPairHandler } from './brackets-pair'
 import { dashHandler } from './dash'
 import { htmlBlocksHandler } from './html-blocks'
 import { htmlElementPairHandler } from './html-element-pair'
+import { jsArrowFnHandler } from './js-arrow-fn'
 import { jsAssginHandler } from './js-assign'
 import { jsBlocksHandler } from './js-blocks'
 import { jsxElementPairHandler } from './jsx-element-pair'
@@ -14,6 +15,7 @@ export const handlers: Handler[] = [
 
   // js
   jsxElementPairHandler,
+  jsArrowFnHandler,
   jsBlocksHandler,
   jsAssginHandler,
 
