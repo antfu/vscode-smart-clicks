@@ -37,12 +37,10 @@ export const jsAssginHandler: Handler = {
       let result: Selection |undefined
       traverse(ast.root, {
         enter(path) {
-          if (result)
-            return path.skip()
           if (path.node.start == null || path.node.end == null)
             return
           if (relativeIndex > path.node.end || path.node.start > relativeIndex)
-            return
+            return path.skip()
           if (!supportedNodeType.includes(path.node.type)) {
             log.debug('[js-assign] Unknown type:', path.node.type)
             return
