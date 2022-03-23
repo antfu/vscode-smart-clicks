@@ -16,16 +16,19 @@ import type { Handler } from '../types'
  */
 export const htmlElementHandler: Handler = {
   name: 'html-element',
-  handle({ getAst, doc, char, anchorIndex }) {
+  handle({ getAst, doc, anchor }) {
     const asts = getAst('html')
     if (!asts.length)
       return
-    if (char !== '<')
+
+    const range = doc.getWordRangeAtPosition(anchor, /[\s]{0,2}\</)
+    if (!range)
       return
+    const targetIndex = doc.offsetAt(range.end) - 1
 
     for (const ast of asts) {
       for (const node of traverseHTML(ast.root)) {
-        if (node.range[0] + ast.start === anchorIndex) {
+        if (node.range[0] + ast.start === targetIndex) {
           return new Selection(
             doc.positionAt(node.range[0] + ast.start),
             doc.positionAt(node.range[1] + ast.start),
