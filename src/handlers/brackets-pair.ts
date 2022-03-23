@@ -25,51 +25,65 @@ const bracketPairs: [left: string, right: string, inset: boolean][] = [
 export const bracketsPairHandler: Handler = {
   name: 'brackets-pair',
   handle({ charLeft, charRight, doc, anchor: _anchor, withOffset }) {
-    const bracketLeft = bracketPairs.find(i => i[0] === charLeft)
-    const bracketRight = bracketPairs.find(i => i[0] === charRight)
-    const bracket = bracketLeft || bracketRight
-    const anchor = bracketLeft ? withOffset(_anchor, -1) : _anchor
+    for (const DIR of [1, -1]) {
+      const OPEN = DIR === 1 ? 0 : 1
+      const CLOSE = DIR === 1 ? 1 : 0
 
-    if (!bracket)
-      return
+      const bracketLeft = bracketPairs.find(i => i[OPEN] === charLeft)
+      const bracketRight = bracketPairs.find(i => i[OPEN] === charRight)
+      const bracket = bracketLeft || bracketRight
+      const anchor = bracketLeft ? withOffset(_anchor, -1) : _anchor
 
-    const start = withOffset(anchor, 1)
-    const rest = doc.getText(new Range(start, new Position(Infinity, Infinity)))
-
-    // search for the right bracket
-    let index = -1
-    let curly = 0
-    for (let i = 0; i < rest.length; i++) {
-      const c = rest[i]
-      if (rest[i - 1] === '\\')
+      if (!bracket)
         continue
-      if (c === bracket[0])
-        curly++
-      if (c === bracket[1]) {
-        curly--
-        if (curly < 0) {
-          index = i
-          break
+
+      const start = withOffset(anchor, DIR)
+      const rest = doc.getText(
+        DIR === 1
+          ? new Range(start, new Position(Infinity, Infinity))
+          : new Range(new Position(0, 0), start),
+      )
+
+      // search for the right bracket
+      let index = -1
+      let curly = 0
+      for (let i = 0; i < rest.length; i += 1) {
+        const idx = (rest.length + i * DIR) % rest.length
+        const c = rest[idx]
+        if (rest[idx - 1] === '\\')
+          continue
+        if (c === bracket[OPEN]) {
+          curly++
+        }
+        else if (c === bracket[CLOSE]) {
+          curly--
+          if (curly < 0) {
+            index = i
+            break
+          }
         }
       }
-    }
 
-    if (index < 0)
-      return
+      if (index < 0)
+        continue
 
-    // inset
-    if (bracket[2]) {
-      return new Selection(
-        start,
-        withOffset(start, index),
-      )
-    }
-    // not inset
-    else {
-      return new Selection(
-        anchor,
-        withOffset(start, index + 1),
-      )
+      if (DIR === -1)
+        index -= 1
+
+      // inset
+      if (bracket[2]) {
+        return new Selection(
+          start,
+          withOffset(start, index * DIR),
+        )
+      }
+      // not inset
+      else {
+        return new Selection(
+          anchor,
+          withOffset(start, index * DIR + DIR),
+        )
+      }
     }
   },
 }
