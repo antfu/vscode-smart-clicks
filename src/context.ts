@@ -28,7 +28,7 @@ export function createContext(
   }
 
   function getAst<T extends AstLang>(lang: T): AstIdMap[T][] {
-    return ast.filter(i => i.type === lang && i.start <= anchorIndex && i.end >= anchorIndex) as AstIdMap[T][]
+    return ast.filter(i => i.type === lang && i.start <= anchorIndex && i.end >= anchorIndex && i.root) as AstIdMap[T][]
   }
 
   const context: HandlerContext = {

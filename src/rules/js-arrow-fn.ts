@@ -20,14 +20,16 @@ const supportedNodeType = [
  */
 export const jsArrowFnHandler: Handler = {
   name: 'js-arrow-fn',
-  handle({ doc, getAst, anchorIndex, anchor }) {
-    const range = doc.getWordRangeAtPosition(anchor, /\=\>/)
-
-    if (!range)
+  handle({ doc, getAst, anchorIndex, anchor, chars }) {
+    if (!chars.includes('='))
       return
 
     const asts = getAst('js')
     if (!asts.length)
+      return
+
+    const range = doc.getWordRangeAtPosition(anchor, /\=\>/)
+    if (!range || range.isEmpty)
       return
 
     for (const ast of getAst('js')) {

@@ -1,5 +1,5 @@
 import traverse from '@babel/traverse'
-import { Selection } from 'vscode'
+import { Range, Selection } from 'vscode'
 // import { log } from '../log'
 import type { Handler } from '../types'
 
@@ -23,12 +23,15 @@ const supportedNodeType = [
  */
 export const jsAssginHandler: Handler = {
   name: 'js-assign',
-  handle({ doc, getAst, chars, anchorIndex }) {
+  handle({ doc, getAst, chars, anchorIndex, withOffset, anchor }) {
     if (!chars.includes('='))
       return
 
     const asts = getAst('js')
     if (!asts.length)
+      return
+
+    if (doc.getText(new Range(anchor, withOffset(anchor, 2))).includes('=>'))
       return
 
     for (const ast of getAst('js')) {
