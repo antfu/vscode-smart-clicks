@@ -34,6 +34,16 @@
   "contributes": {
     "configuration": {
       "properties": {
+        "smartClicks.clicksInterval": {
+          "type": "number",
+          "default": 600,
+          "description": "The interval between clicks in milliseconds."
+        },
+        "smartClicks.triggerDelay": {
+          "type": "number",
+          "default": 150,
+          "description": "The delay after triggering the selection. To prevent conflicting with normal selection."
+        },
         "smartClicks.rules": {
           "type": "object",
           "properties": {

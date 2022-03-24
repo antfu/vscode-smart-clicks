@@ -11,6 +11,8 @@ export function activate(ext: ExtensionContext) {
   let prevSelection: Selection | undefined
   let timer: any
 
+  const config = workspace.getConfiguration('smartClicks')
+
   ext.subscriptions.push(
     workspace.onDidChangeTextDocument((e) => {
       astCache.delete(e.document.uri.fsPath)
@@ -32,7 +34,7 @@ export function activate(ext: ExtensionContext) {
         || !prevSelection.isEmpty
         || e.selections.length !== 1
         || selection.start.line !== prevSelection.start.line
-        || Date.now() - last > 1000
+        || Date.now() - last > config.get('clicksInterval', 600)
         )
           return
       }
@@ -48,7 +50,7 @@ export function activate(ext: ExtensionContext) {
           last = 0
           e.textEditor.selections = newSelection
         }
-      }, 100)
+      }, config.get('triggerDelay', 150))
     }),
   )
 }
