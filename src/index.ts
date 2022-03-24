@@ -1,12 +1,7 @@
 import type { ExtensionContext, Selection, TextEditor } from 'vscode'
 import { TextEditorSelectionChangeKind, window, workspace } from 'vscode'
-import { toArray } from '@antfu/utils'
-import { applyHandlers } from './rules'
-import { applyParser } from './parsers'
 import type { AstRoot } from './types'
-import { toSelection } from './utils'
-import { log } from './log'
-import { createContext } from './context'
+import { trigger } from './trigger'
 
 export const astCache = new Map<string, AstRoot[]>()
 
@@ -50,20 +45,13 @@ export function activate(ext: ExtensionContext) {
       if (Date.now() - last > 1000)
         return update()
 
+      update()
+
       timer = setTimeout(async() => {
-        const context = createContext(e, prevSelection!, selection)
-
-        log.debug('trigger')
-        log.debug(context)
-
-        update()
-
-        await applyParser(context)
-
-        const newSelection = applyHandlers(context)
+        const newSelection = await trigger(e.textEditor.document, prevSelection!, selection)
         if (newSelection) {
+          e.textEditor.selections = newSelection
           last = 0
-          e.textEditor.selections = toArray(newSelection).map(toSelection)
         }
       }, 100)
     }),

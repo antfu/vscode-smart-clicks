@@ -1,10 +1,9 @@
 import type { ParseResult as AstRootJS } from '@babel/parser'
-import type { Position, Range, Selection, TextDocument, TextEditor } from 'vscode'
+import type { Position, Range, Selection, TextDocument } from 'vscode'
 import type { HTMLElement as AstRootHTML } from 'node-html-parser'
 
 export interface HandlerContext {
   doc: TextDocument
-  editor: TextEditor
   langId: string
   anchor: Position
   anchorIndex: number

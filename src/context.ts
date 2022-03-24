@@ -1,14 +1,13 @@
 import { Range } from 'vscode'
-import type { Position, Selection, TextEditorSelectionChangeEvent } from 'vscode'
+import type { Position, Selection, TextDocument } from 'vscode'
 import type { AstIdMap, AstLang, HandlerContext } from './types'
 import { astCache } from './index'
 
 export function createContext(
-  e: TextEditorSelectionChangeEvent,
+  doc: TextDocument,
   prevSelection: Selection,
-  selection: Selection) {
-  const doc = e.textEditor.document
-  const editor = e.textEditor
+  selection: Selection,
+) {
   const anchor = prevSelection.start
   const anchorIndex = doc.offsetAt(anchor)
 
@@ -33,7 +32,6 @@ export function createContext(
   }
 
   const context: HandlerContext = {
-    editor,
     doc,
     langId: doc.languageId,
     anchor,
