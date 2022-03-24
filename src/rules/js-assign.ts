@@ -1,6 +1,6 @@
 import traverse from '@babel/traverse'
 import { Selection } from 'vscode'
-import { log } from '../log'
+// import { log } from '../log'
 import type { Handler } from '../types'
 
 const supportedNodeType = [
@@ -42,7 +42,7 @@ export const jsAssginHandler: Handler = {
           if (relativeIndex > path.node.end || path.node.start > relativeIndex)
             return path.skip()
           if (!supportedNodeType.includes(path.node.type)) {
-            log.debug('[js-assign] Unknown type:', path.node.type)
+            // log.debug('[js-assign] Unknown type:', path.node.type)
             return
           }
           result = new Selection(

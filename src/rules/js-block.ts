@@ -1,7 +1,7 @@
 import traverse from '@babel/traverse'
 import { Selection } from 'vscode'
 import type { Node } from '@babel/types'
-import { log } from '../log'
+// import { log } from '../log'
 import type { Handler } from '../types'
 
 const supportedNodeType = [
@@ -58,7 +58,7 @@ export const jsBlockHandler: Handler = {
             return path.skip()
 
           if (!supportedNodeType.includes(path.node.type)) {
-            log.debug('[js-block] Unknown type:', path.node.type)
+            // log.debug('[js-block] Unknown type:', path.node.type)
             return
           }
           node = path.node

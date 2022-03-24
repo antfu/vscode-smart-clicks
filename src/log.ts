@@ -9,8 +9,8 @@ export const log = {
     if (!isDebug)
       return
     // eslint-disable-next-line no-console
-    console.debug(...args)
-    this.log(args)
+    console.log(...args)
+    this.log(...args)
   },
 
   log(...args: any[]) {

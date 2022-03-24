@@ -13,7 +13,6 @@ export async function trigger(
 ) {
   const context = createContext(doc, prevSelection, selection)
 
-  log.debug('trigger')
   log.debug(context)
 
   await applyParser(context)
