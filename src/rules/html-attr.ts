@@ -1,5 +1,3 @@
-import { Selection } from 'vscode'
-import { traverseHTML } from '../parsers/html'
 import type { Handler } from '../types'
 
 /**

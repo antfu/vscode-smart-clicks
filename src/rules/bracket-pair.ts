@@ -1,14 +1,14 @@
 import { Position, Range, Selection } from 'vscode'
 import type { Handler } from '../types'
 
-const bracketPairs: [left: string, right: string, inset: boolean][] = [
-  ['(', ')', true],
-  ['[', ']', true],
-  ['{', '}', true],
-  ['<', '>', false],
-  ['"', '"', true],
-  ['`', '`', true],
-  ['\'', '\'', true],
+const bracketPairs: [left: string, right: string][] = [
+  ['(', ')'],
+  ['[', ']'],
+  ['{', '}'],
+  ['<', '>'],
+  ['"', '"'],
+  ['`', '`'],
+  ['\'', '\''],
 ]
 
 /**
@@ -67,21 +67,16 @@ export const bracketPairHandler: Handler = {
       if (index < 0)
         continue
 
-      if (DIR === -1)
-        index -= 1
-
-      // inset
-      if (bracket[2]) {
+      if (DIR === 1) {
         return new Selection(
           start,
-          withOffset(start, index * DIR),
+          withOffset(start, index),
         )
       }
-      // not inset
       else {
         return new Selection(
-          anchor,
-          withOffset(start, index * DIR + DIR),
+          withOffset(start, index * DIR + 1),
+          withOffset(start, 1),
         )
       }
     }
