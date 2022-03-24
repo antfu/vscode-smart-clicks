@@ -41,6 +41,16 @@ foo-bar
 └─────┘
 ```
 
+#### [`html-attr`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/html-attr.ts)
+
+`=` to HTML attribute.
+
+```html
+          ▽
+<div class="btn"></div>
+     └─────────┘
+```
+
 #### [`html-element`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/html-element.ts)
 
 `<` to the entire element.
@@ -110,14 +120,14 @@ Matches JSX elements' start and end tags.
 
 ## Configuration
 
-All the rules are enabled by default. To disable specific a rule, set the rule to `false` in `smartClicks.rules` of your VS Code settings:
+All the rules are enabled by default. To disable a specific rule, set the rule to `false` in `smartClicks.rules` of your VS Code settings:
 
 ```jsonc
 // settings.json
 {
   "smartClicks.rules": {
-    "dash": true,
-    "html-element": true
+    "dash": false,
+    "html-element": false
   }
 }
 ```

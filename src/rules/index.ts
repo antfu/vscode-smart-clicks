@@ -2,6 +2,7 @@ import { workspace } from 'vscode'
 import type { Handler, HandlerContext } from '../types'
 import { bracketPairHandler } from './bracket-pair'
 import { dashHandler } from './dash'
+import { htmlAttrHandler } from './html-attr'
 import { htmlElementHandler } from './html-element'
 import { htmlTagPairHandler } from './html-tag-pair'
 import { jsArrowFnHandler } from './js-arrow-fn'
@@ -13,6 +14,7 @@ export const handlers: Handler[] = [
   // html
   htmlTagPairHandler,
   htmlElementHandler,
+  htmlAttrHandler,
 
   // js
   jsxTagPairHandler,

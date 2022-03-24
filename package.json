@@ -47,6 +47,11 @@
               "default": true,
               "description": "`-` to identifier.\n\n```css\n   ▽\nfoo-bar\n└─────┘\n```"
             },
+            "html-attr": {
+              "type": "boolean",
+              "default": true,
+              "description": "`=` to HTML attribute.\n\n```html\n          ▽\n<div class=\"btn\"></div>\n     └─────────┘\n```"
+            },
             "html-element": {
               "type": "boolean",
               "default": true,
