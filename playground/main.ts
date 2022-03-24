@@ -116,7 +116,7 @@ export class ViteNodeRunner {
 
 function exportAll(exports: any, sourceModule: any) {
   // eslint-disable-next-line no-restricted-syntax
-  for (const key in sourceModule) {
+  for (const key of sourceModule) {
     if (key !== 'default') {
       try {
         Object.defineProperty(exports, key, {
@@ -125,7 +125,12 @@ function exportAll(exports: any, sourceModule: any) {
           get: () => { return sourceModule[key] },
         })
       }
-      catch (_err) { }
+      finally {
+        console.log()
+      }
+    }
+    else if (hi) {
+
     }
   }
 }

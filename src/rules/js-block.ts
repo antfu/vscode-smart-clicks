@@ -1,15 +1,20 @@
 import traverse from '@babel/traverse'
 import { Selection } from 'vscode'
+import type { Node } from '@babel/types'
 import { log } from '../log'
 import type { Handler } from '../types'
 
 const supportedNodeType = [
+  'BlockStatement',
+  'CatchClause',
   'ClassDeclaration',
   'DoWhileStatement',
   'ExportAllDeclaration',
   'ExportDefaultDeclaration',
   'ExportNamedDeclaration',
   'ForStatement',
+  'ForInStatement',
+  'ForOfStatement',
   'FunctionDeclaration',
   'IfStatement',
   'ImportDeclaration',
@@ -42,31 +47,58 @@ export const jsBlockHandler: Handler = {
   handle({ selection, doc, getAst }) {
     for (const ast of getAst('js')) {
       const index = doc.offsetAt(selection.start)
+      const relativeIndex = index - ast.start
 
-      let result: Selection |undefined
+      let node: Node | undefined
       traverse(ast.root, {
         enter(path) {
-          if (result)
-            return path.skip()
           if (path.node.start == null || path.node.end == null)
             return
-          if (path.node.start + ast.start !== index)
-            return
+          if (relativeIndex > path.node.end || path.node.start > relativeIndex)
+            return path.skip()
 
           if (!supportedNodeType.includes(path.node.type)) {
             log.debug('[js-block] Unknown type:', path.node.type)
             return
           }
-
-          result = new Selection(
-            doc.positionAt(ast.start + path.node.start),
-            doc.positionAt(ast.start + path.node.end),
-          )
+          node = path.node
         },
       })
 
-      if (result)
-        return result
+      if (!node)
+        continue
+
+      let start = node.start
+      let end = node.end
+
+      // if ... else
+      if (
+        node.type === 'IfStatement'
+        && node.alternate
+        && node.consequent.end! <= relativeIndex
+        && node.alternate.start! > relativeIndex
+      ) {
+        start = node.consequent.end
+        end = node.alternate.end
+      }
+      // try ... finally
+      else if (
+        node.type === 'TryStatement'
+        && node.finalizer
+        && (node.handler?.end ?? node.block.end!) <= relativeIndex
+        && node.finalizer.start! - relativeIndex > 4
+      ) {
+        start = (node.handler?.end || node.block.end!)
+        end = node.finalizer.end
+      }
+      else if (node.start !== relativeIndex) {
+        continue
+      }
+
+      return new Selection(
+        doc.positionAt(ast.start + start!),
+        doc.positionAt(ast.start + end!),
+      )
     }
   },
 }
