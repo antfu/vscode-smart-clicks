@@ -1,6 +1,6 @@
 import { window } from 'vscode'
 
-export const isDebug = false
+export const isDebug = process.env.NODE_ENV === 'development'
 
 export const channel = window.createOutputChannel('Smart Click')
 
