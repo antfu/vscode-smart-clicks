@@ -18,40 +18,35 @@ export function activate(ext: ExtensionContext) {
 
     window.onDidChangeTextEditorSelection(async(e) => {
       clearTimeout(timer)
-      if (e.kind !== TextEditorSelectionChangeKind.Mouse)
+      if (e.kind !== TextEditorSelectionChangeKind.Mouse) {
+        last = 0
         return
+      }
 
       const selection = e.selections[0]
 
-      function update() {
+      try {
+        if (
+          prevEditor !== e.textEditor
+        || !prevSelection
+        || !prevSelection.isEmpty
+        || e.selections.length !== 1
+        || selection.start.line !== prevSelection.start.line
+        || Date.now() - last > 1000
+        )
+          return
+      }
+      finally {
         prevEditor = e.textEditor
         prevSelection = selection
         last = Date.now()
       }
 
-      // editor
-      if (prevEditor !== e.textEditor)
-        return update()
-
-      // selection
-      if (
-        e.selections.length !== 1
-        || !prevSelection
-        || !prevSelection.isEmpty
-        || selection.start.line !== prevSelection.start.line
-      )
-        return update()
-
-      if (Date.now() - last > 1000)
-        return update()
-
-      update()
-
       timer = setTimeout(async() => {
         const newSelection = await trigger(e.textEditor.document, prevSelection!, selection)
         if (newSelection) {
-          e.textEditor.selections = newSelection
           last = 0
+          e.textEditor.selections = newSelection
         }
       }, 100)
     }),
