@@ -122,7 +122,7 @@ function exportAll(exports: any, sourceModule: any) {
         Object.defineProperty(exports, key, {
           enumerable: true,
           configurable: true,
-          get() { return sourceModule[key] },
+          get: () => { return sourceModule[key] },
         })
       }
       catch (_err) { }

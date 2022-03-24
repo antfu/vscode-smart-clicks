@@ -77,6 +77,11 @@
               "default": true,
               "description": "Blocks like `if`, `for`, `while`, etc. in JavaScript.\n\n```js\n▽\nfunction () {     }\n└─────────────────┘\n```\n\n```js\n▽\nimport { ref } from 'vue'\n└───────────────────────┘\n```"
             },
+            "js-colon": {
+              "type": "boolean",
+              "default": true,
+              "description": "`:` to the value.\n\n```js\n     ▽\n{ foo: { bar } }\n       └─────┘\n```"
+            },
             "jsx-tag-pair": {
               "type": "boolean",
               "default": true,

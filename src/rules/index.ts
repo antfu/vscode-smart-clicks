@@ -8,6 +8,7 @@ import { htmlTagPairHandler } from './html-tag-pair'
 import { jsArrowFnHandler } from './js-arrow-fn'
 import { jsAssginHandler } from './js-assign'
 import { jsBlockHandler } from './js-block'
+import { jsColonHandler } from './js-colon'
 import { jsxTagPairHandler } from './jsx-tag-pair'
 
 export const handlers: Handler[] = [
@@ -21,6 +22,7 @@ export const handlers: Handler[] = [
   jsArrowFnHandler,
   jsBlockHandler,
   jsAssginHandler,
+  jsColonHandler,
 
   // general
   dashHandler,

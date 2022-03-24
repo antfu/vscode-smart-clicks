@@ -107,6 +107,16 @@ import { ref } from 'vue'
 └───────────────────────┘
 ```
 
+#### [`js-colon`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/js-colon.ts)
+
+`:` to the value.
+
+```js
+     ▽
+{ foo: { bar } }
+       └─────┘
+```
+
 #### [`jsx-tag-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/jsx-tag-pair.ts)
 
 Matches JSX elements' start and end tags.
