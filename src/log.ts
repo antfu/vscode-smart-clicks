@@ -14,8 +14,6 @@ export const log = {
   },
 
   log(...args: any[]) {
-    if (!isDebug)
-      return
     channel.appendLine(args.map(i => String(i)).join(' '))
   },
 }
