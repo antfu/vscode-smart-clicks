@@ -26,6 +26,7 @@ export function activate(ext: ExtensionContext) {
       }
 
       const selection = e.selections[0]
+      const prev = prevSelection
 
       try {
         if (
@@ -45,7 +46,7 @@ export function activate(ext: ExtensionContext) {
       }
 
       timer = setTimeout(async() => {
-        const newSelection = await trigger(e.textEditor.document, prevSelection!, selection)
+        const newSelection = await trigger(e.textEditor.document, prev!, selection)
         if (newSelection) {
           last = 0
           e.textEditor.selections = newSelection
