@@ -107,6 +107,8 @@ import { ref } from 'vue'
 └───────────────────────┘
 ```
 
+This rule is *disabled* by default.
+
 #### [`js-colon`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/js-colon.ts)
 
 `:` to the value.
@@ -137,7 +139,8 @@ All the rules are enabled by default. To disable a specific rule, set the rule t
 {
   "smartClicks.rules": {
     "dash": false,
-    "html-element": false
+    "html-element": false,
+    "js-block": true
   }
 }
 ```
