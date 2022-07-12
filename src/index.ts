@@ -18,7 +18,7 @@ export function activate(ext: ExtensionContext) {
       astCache.delete(e.document.uri.fsPath)
     }),
 
-    window.onDidChangeTextEditorSelection(async(e) => {
+    window.onDidChangeTextEditorSelection(async (e) => {
       clearTimeout(timer)
       if (e.kind !== TextEditorSelectionChangeKind.Mouse) {
         last = 0
@@ -45,7 +45,7 @@ export function activate(ext: ExtensionContext) {
         last = Date.now()
       }
 
-      timer = setTimeout(async() => {
+      timer = setTimeout(async () => {
         const newSelection = await trigger(e.textEditor.document, prev!, selection)
         if (newSelection) {
           last = 0

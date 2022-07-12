@@ -20,7 +20,7 @@ export const jsxTagPairHandler: Handler = {
     for (const ast of getAst('js')) {
       const index = doc.offsetAt(selection.start)
 
-      let result: Selection[] |undefined
+      let result: Selection[] | undefined
       traverse(ast.root, {
         JSXElement(path) {
           if (result)

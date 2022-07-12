@@ -5,7 +5,7 @@ import { parseJS } from './javascript'
 
 export const htmlParser: Parser = {
   name: 'html',
-  handle: async({ ast, langId, doc }) => {
+  handle: async ({ ast, langId, doc }) => {
     const id = 'html-root'
     if (ast.find(i => i.id === id))
       return

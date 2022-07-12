@@ -37,7 +37,7 @@ export const jsAssginHandler: Handler = {
     for (const ast of getAst('js')) {
       const relativeIndex = anchorIndex - ast.start
 
-      let result: Selection |undefined
+      let result: Selection | undefined
       traverse(ast.root, {
         enter(path) {
           if (path.node.start == null || path.node.end == null)

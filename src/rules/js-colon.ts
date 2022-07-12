@@ -28,7 +28,7 @@ export const jsColonHandler: Handler = {
     for (const ast of getAst('js')) {
       const relativeIndex = doc.offsetAt(range.end) - ast.start
 
-      let result: Selection |undefined
+      let result: Selection | undefined
       traverse(ast.root, {
         enter(path) {
           if (result)

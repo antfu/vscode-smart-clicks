@@ -4,7 +4,7 @@ import type { AstRoot, Parser } from '../types'
 
 export const jsParser: Parser = {
   name: 'js',
-  handle: async({ ast, doc, langId }) => {
+  handle: async ({ ast, doc, langId }) => {
     const id = 'js-root'
     if (ast.find(i => i.id === id))
       return
