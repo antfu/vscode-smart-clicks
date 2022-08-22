@@ -1,5 +1,6 @@
 import type { HTMLElement } from 'node-html-parser'
 import { parse } from 'node-html-parser'
+import { workspace } from 'vscode'
 import type { Parser } from '../types'
 import { parseJS } from './javascript'
 
@@ -10,7 +11,8 @@ export const htmlParser: Parser = {
     if (ast.find(i => i.id === id))
       return
 
-    if (!['html', 'vue', 'svelte'].includes(langId))
+    const config = workspace.getConfiguration('smartClicks')
+    if (!config.get<string[]>('htmlLanguageIds', []).includes(langId))
       return
 
     const code = doc.getText()
