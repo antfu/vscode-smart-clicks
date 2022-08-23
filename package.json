@@ -44,6 +44,18 @@
           "default": 150,
           "description": "The delay after triggering the selection. To prevent conflicting with normal selection."
         },
+        "smartClicks.htmlLanguageIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "html",
+            "vue",
+            "svelte"
+          ],
+          "description": "Array of language IDs to enable html smartClicks"
+        },
         "smartClicks.rules": {
           "type": "object",
           "properties": {
