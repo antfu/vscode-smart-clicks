@@ -46,6 +46,10 @@ const supportedNodeType = [
 export const jsBlockHandler: Handler = {
   name: 'js-block',
   handle({ selection, doc, getAst }) {
+    const selectionText = doc.getText(selection)
+    if (selectionText === 'async')
+      return
+
     for (const ast of getAst('js')) {
       const index = doc.offsetAt(selection.start)
       const relativeIndex = index - ast.start

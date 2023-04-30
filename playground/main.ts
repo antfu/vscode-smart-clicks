@@ -114,8 +114,7 @@ export class ViteNodeRunner {
   }
 }
 
-function exportAll(exports: any, sourceModule: any) {
-  // eslint-disable-next-line no-restricted-syntax
+async function exportAll(exports: any, sourceModule: any) {
   for (const key of sourceModule) {
     if (key !== 'default') {
       try {
