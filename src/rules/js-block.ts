@@ -1,5 +1,6 @@
 import traverse from '@babel/traverse'
-import { Selection } from 'vscode'
+import type { TextDocument } from 'vscode'
+import { Range, Selection } from 'vscode'
 import type { Node } from '@babel/types'
 // import { log } from '../log'
 import type { Handler } from '../types'
@@ -45,6 +46,9 @@ const supportedNodeType = [
 export const jsBlockHandler: Handler = {
   name: 'js-block',
   handle({ selection, doc, getAst }) {
+    if (isAsyncKeyword(doc, selection))
+      return
+
     for (const ast of getAst('js')) {
       const index = doc.offsetAt(selection.start)
       const relativeIndex = index - ast.start
@@ -101,4 +105,8 @@ export const jsBlockHandler: Handler = {
       )
     }
   },
+}
+
+function isAsyncKeyword(doc: TextDocument, selection: Selection) {
+  return doc.getText(new Range(selection.start, selection.end)) === 'async'
 }
