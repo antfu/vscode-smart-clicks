@@ -47,7 +47,8 @@ const supportedNodeType = [
 export const jsBlockHandler: Handler = {
   name: 'js-block',
   handle({ selection, doc, getAst }) {
-    if (isAsyncKeyword(doc, selection))
+    const selectionText = doc.getText(selection)
+    if (selectionText === 'async')
       return
 
     for (const ast of getAst('js')) {
@@ -106,8 +107,4 @@ export const jsBlockHandler: Handler = {
       )
     }
   },
-}
-
-function isAsyncKeyword(doc: TextDocument, selection: Selection) {
-  return doc.getText(new Range(selection.start, selection.end)) === 'async'
 }
