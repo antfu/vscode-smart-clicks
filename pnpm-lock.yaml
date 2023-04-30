@@ -14,6 +14,7 @@ importers:
       '@types/node': ^18.0.3
       '@types/vscode': ^1.69.0
       bumpp: ^8.2.1
+      cross-env: ^7.0.3
       eslint: ^8.19.0
       esno: ^0.16.3
       fast-glob: ^3.2.11
@@ -37,6 +38,7 @@ importers:
       '@types/node': 18.0.3
       '@types/vscode': 1.69.0
       bumpp: 8.2.1
+      cross-env: 7.0.3
       eslint: 8.19.0
       esno: 0.16.3
       fast-glob: 3.2.11
@@ -1050,6 +1052,14 @@ packages:
 
   /core-util-is/1.0.3:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
+    dev: true
+
+  /cross-env/7.0.3:
+    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
+    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
     dev: true
 
   /cross-spawn/7.0.3:

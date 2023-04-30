@@ -116,8 +116,8 @@
     }
   },
   "scripts": {
-    "build": "NODE_ENV=production tsup",
-    "dev": "NODE_ENV=development tsup --watch",
+    "build": "cross-env NODE_ENV=production tsup",
+    "dev": "cross-env NODE_ENV=development tsup --watch",
     "lint": "eslint .",
     "vscode:prepublish": "nr build",
     "publish": "vsce publish --no-dependencies",
@@ -138,6 +138,7 @@
     "@types/node": "^18.0.3",
     "@types/vscode": "^1.69.0",
     "bumpp": "^8.2.1",
+    "cross-env": "^7.0.3",
     "eslint": "^8.19.0",
     "esno": "^0.16.3",
     "fast-glob": "^3.2.11",
