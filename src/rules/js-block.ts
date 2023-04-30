@@ -1,6 +1,5 @@
 import traverse from '@babel/traverse'
-import type { TextDocument } from 'vscode'
-import { Range, Selection } from 'vscode'
+import { Selection } from 'vscode'
 import type { Node } from '@babel/types'
 
 // import { log } from '../log'
