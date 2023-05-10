@@ -47,7 +47,9 @@ export function activate(ext: ExtensionContext) {
 
       timer = setTimeout(async () => {
         const newSelection = await trigger(e.textEditor.document, prev!, selection)
-        if (newSelection) {
+        const newSelectionText = e.textEditor.document.getText(newSelection?.[0])
+        // Skip empty results when selecting text like "/>", "{}", "()"
+        if (newSelection && newSelectionText) {
           last = 0
           e.textEditor.selections = newSelection
         }
