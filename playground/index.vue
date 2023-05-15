@@ -6,6 +6,17 @@ const go = () => {
   if (name)
     router.push(`/hi/${encodeURIComponent(name)}`)
 }
+
+const bracketPair1 = ']['
+const getBracketPairs = () => {
+  // Triple click on the blank space of the next line ▽
+  const arr: string[] = []
+  const bracketPair2 = ')('
+  // Triple click on the blank space of the next line ▽
+  arr.toString()
+  arr.push(bracketPair1, bracketPair2)
+  return arr
+}
 </script>
 
 <template>
@@ -35,6 +46,7 @@ const go = () => {
       border="~ rounded gray-200 dark:gray-700"
       outline="none active:none"
       @keydown.enter="go"
+      @click="getBracketPairs"
     >
 
     <div>

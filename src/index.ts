@@ -46,6 +46,10 @@ export function activate(ext: ExtensionContext) {
       }
 
       timer = setTimeout(async () => {
+        const { rangeIncludingLineBreak } = e.textEditor.document.lineAt(e.textEditor.selection.active.line - 1)
+
+        if (rangeIncludingLineBreak.isEqual(selection))
+          return
         const newSelection = await trigger(e.textEditor.document, prev!, selection)
         const newSelectionText = e.textEditor.document.getText(newSelection?.[0])
         // Skip empty results when selecting text like "/>", "{}", "()"
