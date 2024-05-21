@@ -23,6 +23,6 @@ export const htmlAttrHandler: Handler = {
     if (!range)
       return
 
-    return doc.getWordRangeAtPosition(anchor, /[\w.:@-]+=(["']).*?\1/)
+    return doc.getWordRangeAtPosition(anchor, /[\w.:@-]+=(["']).*?\1|[\w.:@-]+=\{.*?\}/)
   },
 }
