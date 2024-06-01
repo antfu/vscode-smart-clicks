@@ -31,13 +31,14 @@ export function activate(ext: ExtensionContext) {
       try {
         if (
           prevEditor !== e.textEditor
-        || !prevSelection
-        || !prevSelection.isEmpty
-        || e.selections.length !== 1
-        || selection.start.line !== prevSelection.start.line
-        || Date.now() - last > config.get('clicksInterval', 600)
-        )
+          || !prevSelection
+          || !prevSelection.isEmpty
+          || e.selections.length !== 1
+          || selection.start.line !== prevSelection.start.line
+          || Date.now() - last > config.get('clicksInterval', 600)
+        ) {
           return
+        }
       }
       finally {
         prevEditor = e.textEditor

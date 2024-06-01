@@ -21,7 +21,7 @@ export const htmlElementHandler: Handler = {
     if (!asts.length)
       return
 
-    const range = doc.getWordRangeAtPosition(anchor, /[\s]{0,2}\</)
+    const range = doc.getWordRangeAtPosition(anchor, /\s{0,2}</)
     if (!range)
       return
     const targetIndex = doc.offsetAt(range.end) - 1

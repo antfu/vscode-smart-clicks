@@ -21,7 +21,7 @@ export const htmlTagPairHandler: Handler = {
     if (!asts.length)
       return
 
-    const range = doc.getWordRangeAtPosition(selection.start, /[\w._-]+/) || selection
+    const range = doc.getWordRangeAtPosition(selection.start, /[\w.\-]+/) || selection
     const rangeText = doc.getText(range)
     const preCharPos = withOffset(range.start, -1)
     const preChar = doc.getText(new Range(preCharPos, range.start))

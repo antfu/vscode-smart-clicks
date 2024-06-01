@@ -28,7 +28,7 @@ export const jsArrowFnHandler: Handler = {
     if (!asts.length)
       return
 
-    const range = doc.getWordRangeAtPosition(anchor, /\=\>/)
+    const range = doc.getWordRangeAtPosition(anchor, /=>/)
     if (!range || range.isEmpty)
       return
 

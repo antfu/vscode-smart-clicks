@@ -21,6 +21,7 @@ Double clicks on the code.
 
 <!-- Generated from JSDocs, do not modify it directly -->
 <!--rules-->
+
 #### [`bracket-pair`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/bracket-pair.ts)
 
 Pair to inner content of brackets.
@@ -107,7 +108,7 @@ import { ref } from 'vue'
 └───────────────────────┘
 ```
 
-This rule is *disabled* by default.
+This rule is _disabled_ by default.
 
 #### [`js-colon`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/js-colon.ts)
 
@@ -128,6 +129,7 @@ Matches JSX elements' start and end tags.
 (<Flex.Item>Hi</Flex.Item>)
   └───────┘     └───────┘
 ```
+
 <!--rules-->
 
 ## Configuration

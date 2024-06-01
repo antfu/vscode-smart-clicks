@@ -30,7 +30,7 @@ async function run() {
       file,
     } as Parsed
     const lines = match.split('\n')
-      .map(i => i.replace(/^\s*[\/*]+\s?/, '').trimEnd())
+      .map(i => i.replace(/^\s*[/*]+\s?/, '').trimEnd())
       .filter((i) => {
         if (i.startsWith('@name ')) {
           info.name = i.slice(6)
