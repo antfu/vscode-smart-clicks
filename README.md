@@ -151,21 +151,21 @@ All the rules are enabled by default. To disable a specific rule, set the rule t
 
 | ID                  | Description                                                     |
 | ------------------- | --------------------------------------------------------------- |
-| `smartClicks.click` | use Smart Clicks in current cursor position without mouse click |
+| `smartClicks.trigger` | Trigger Smart Clicks in current cursor position without mouse click |
 
 Usage examples:
 
-1. command palette
+1. Command palette
 
-   Invoke the command palette by typing `Ctrl+Shift+P` and then typing `Smart Clicks: Click`.
+   Invoke the command palette by typing `Ctrl+Shift+P` and then typing `Smart Clicks: Trigger`.
 
-2. keyboard shortcuts
+2. Keyboard shortcuts
 
    ```jsonc
    // keybindings.json
    {
        "key": "ctrl+alt+c",
-       "command": "smartClicks.click",
+       "command": "smartClicks.trigger",
        "when": "editorTextFocus"
    }
    ```

@@ -116,8 +116,8 @@
     },
     "commands": [
       {
-        "title": "Smart Clicks: Click",
-        "command": "smartClicks.click"
+        "title": "Smart Clicks: Trigger",
+        "command": "smartClicks.trigger"
       }
     ]
   },
