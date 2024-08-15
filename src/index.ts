@@ -1,5 +1,5 @@
 import type { ExtensionContext, Selection, TextEditor } from 'vscode'
-import { TextEditorSelectionChangeKind, window, workspace } from 'vscode'
+import { TextEditorSelectionChangeKind, commands, window, workspace } from 'vscode'
 import type { AstRoot } from './types'
 import { trigger } from './trigger'
 
@@ -60,6 +60,28 @@ export function activate(ext: ExtensionContext) {
         }
       }, config.get('triggerDelay', 150))
     }),
+
+    commands.registerCommand(
+      'smartClicks.trigger',
+      async () => {
+        const editor = window.activeTextEditor
+        if (!editor)
+          return
+
+        const prev = editor.selections[0]
+        await commands.executeCommand('editor.action.smartSelect.expand')
+        const selection = editor.selections[0]
+
+        if (editor.selections.length !== 1)
+          return
+
+        const newSelection = await trigger(editor.document, prev, selection)
+        const newSelectionText = editor.document.getText(newSelection?.[0])
+
+        if (newSelection && newSelectionText)
+          editor.selections = newSelection
+      },
+    ),
   )
 }
 
