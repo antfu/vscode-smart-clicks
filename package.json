@@ -3,7 +3,7 @@
   "name": "smart-clicks",
   "displayName": "Smart Clicks",
   "version": "0.1.6",
-  "packageManager": "pnpm@9.1.4",
+  "packageManager": "pnpm@9.7.1",
   "description": "Smart selection with double clicks",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
   "license": "MIT",
@@ -26,7 +26,7 @@
     "dist"
   ],
   "engines": {
-    "vscode": "^1.69.0"
+    "vscode": "^1.92.0"
   },
   "activationEvents": [
     "onStartupFinished"
@@ -134,29 +134,28 @@
     "readme": "esno ./scripts/docs.ts"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.19.2",
-    "@antfu/ni": "^0.21.12",
-    "@antfu/utils": "^0.7.8",
-    "@babel/core": "^7.24.6",
-    "@babel/parser": "^7.24.6",
-    "@babel/traverse": "^7.24.6",
-    "@babel/types": "^7.24.6",
+    "@antfu/eslint-config": "^2.25.2",
+    "@antfu/ni": "^0.22.4",
+    "@antfu/utils": "^0.7.10",
+    "@babel/core": "^7.25.2",
+    "@babel/parser": "^7.25.3",
+    "@babel/traverse": "^7.25.3",
+    "@babel/types": "^7.25.2",
     "@types/babel__traverse": "^7.20.6",
-    "@types/node": "^20.13.0",
-    "@types/vscode": "^1.69.0",
-    "@vscode/vsce": "^2.26.1",
-    "bumpp": "^9.4.1",
-    "eslint": "^9.4.0",
-    "eslint-plugin-format": "^0.1.1",
+    "@types/node": "^22.3.0",
+    "@types/vscode": "^1.92.0",
+    "@vscode/vsce": "^2.32.0",
+    "bumpp": "^9.5.1",
+    "eslint": "^9.9.0",
+    "eslint-plugin-format": "^0.1.2",
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
-    "htmlparser2": "^8.0.2",
     "node-html-parser": "^6.1.13",
-    "pnpm": "^9.1.4",
-    "rimraf": "^5.0.7",
-    "tsup": "^8.0.2",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.12",
-    "vitest": "^1.6.0"
+    "pnpm": "^9.7.1",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.1",
+    "vitest": "^2.0.5"
   }
 }
