@@ -113,7 +113,13 @@
           "description": "Rule toggles"
         }
       }
-    }
+    },
+    "commands": [
+      {
+        "title": "Smart Clicks: Click",
+        "command": "smart-clicks.click"
+      }
+    ]
   },
   "scripts": {
     "build": "NODE_ENV=production tsup",
