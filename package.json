@@ -23,7 +23,9 @@
   "main": "./dist/index.js",
   "icon": "res/icon.png",
   "files": [
-    "dist"
+    "LICENSE.md",
+    "dist/*",
+    "res/*"
   ],
   "engines": {
     "vscode": "^1.92.0"
