@@ -72,7 +72,7 @@ export function activate(ext: ExtensionContext) {
         await commands.executeCommand('editor.action.smartSelect.expand')
         const selection = editor.selections[0]
 
-        if (editor.selections.length !== 1 || prev.isEmpty)
+        if (editor.selections.length !== 1)
           return
 
         const newSelection = await trigger(editor.document, prev, selection)
