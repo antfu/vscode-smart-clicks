@@ -149,8 +149,8 @@ All the rules are enabled by default. To disable a specific rule, set the rule t
 
 ## Commands
 
-| ID                  | Description                                                     |
-| ------------------- | --------------------------------------------------------------- |
+| ID                    | Description                                                         |
+| --------------------- | ------------------------------------------------------------------- |
 | `smartClicks.trigger` | Trigger Smart Clicks in current cursor position without mouse click |
 
 Usage examples:
