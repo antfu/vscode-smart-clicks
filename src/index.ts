@@ -62,7 +62,7 @@ export function activate(ext: ExtensionContext) {
     }),
 
     commands.registerCommand(
-      'smart-clicks.click',
+      'smartClicks.click',
       async () => {
         const editor = window.activeTextEditor
         if (!editor)
