@@ -2,7 +2,7 @@
   "publisher": "antfu",
   "name": "smart-clicks",
   "displayName": "Smart Clicks",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "packageManager": "pnpm@9.7.1",
   "description": "Smart selection with double clicks",
   "author": "Anthony Fu <anthonyfu117@hotmail.com>",
