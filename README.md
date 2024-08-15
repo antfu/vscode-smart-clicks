@@ -178,7 +178,7 @@ Usage examples:
      "vim.normalModeKeyBindings": [
        {
          "before": ["leader", "c"],
-         "commands": ["smart-clicks.click"],
+         "commands": ["smartClicks.trigger"],
        }
      ]
    }
