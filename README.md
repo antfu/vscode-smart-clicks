@@ -147,6 +147,43 @@ All the rules are enabled by default. To disable a specific rule, set the rule t
 }
 ```
 
+## Commands
+
+| ID                  | Description                                                     |
+| ------------------- | --------------------------------------------------------------- |
+| `smartClicks.click` | use Smart Clicks in current cursor position without mouse click |
+
+Usage examples:
+
+1. command palette
+
+   Invoke the command palette by typing `Ctrl+Shift+P` and then typing `Smart Clicks: Click`.
+
+2. keyboard shortcuts
+
+   ```jsonc
+   // keybindings.json
+   {
+       "key": "ctrl+alt+c",
+       "command": "smartClicks.click",
+       "when": "editorTextFocus"
+   }
+   ```
+
+3. Vim keybindings ([VSCodeVim](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) is needed)
+
+   ```jsonc
+   // settings.json
+   {
+     "vim.normalModeKeyBindings": [
+       {
+         "before": ["leader", "c"],
+         "commands": ["smart-clicks.click"],
+       }
+     ]
+   }
+   ```
+
 ## Sponsors
 
 <p align="center">
