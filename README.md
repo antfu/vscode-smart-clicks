@@ -90,6 +90,15 @@ Open and close tags of a HTML element.
         ▽
 const a = []
 └──────────┘
+
+class B {
+    ▽
+  b = 1;
+  └────┘
+    ▽
+  ba = () => {};
+  └────────────┘
+}
 ```
 
 #### [`js-block`](https://github.com/antfu/vscode-smart-clicks/blob/main/src/rules/js-block.ts)

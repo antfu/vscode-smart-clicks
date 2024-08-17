@@ -9,7 +9,7 @@ import { htmlAttrHandler } from './html-attr'
 import { htmlElementHandler } from './html-element'
 import { htmlTagPairHandler } from './html-tag-pair'
 import { jsArrowFnHandler } from './js-arrow-fn'
-import { jsAssginHandler } from './js-assign'
+import { jsAssignHandler } from './js-assign'
 import { jsBlockHandler } from './js-block'
 import { jsColonHandler } from './js-colon'
 import { jsxTagPairHandler } from './jsx-tag-pair'
@@ -24,7 +24,7 @@ export const handlers: Handler[] = [
   jsxTagPairHandler,
   jsArrowFnHandler,
   jsBlockHandler,
-  jsAssginHandler,
+  jsAssignHandler,
   jsColonHandler,
 
   // general
