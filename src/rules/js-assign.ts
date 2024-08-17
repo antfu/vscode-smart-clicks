@@ -8,6 +8,7 @@ const supportedNodeType = [
   'TSTypeAliasDeclaration',
   'VariableDeclaration',
   'AssignmentExpression',
+  'ClassProperty',
 ]
 
 /**
@@ -17,12 +18,21 @@ const supportedNodeType = [
  *         ▽
  * const a = []
  * └──────────┘
+ *
+ * class B {
+ *     ▽
+ *   b = 1;
+ *   └────┘
+ *     ▽
+ *   ba = () => {};
+ *   └────────────┘
+ * }
  * ```
  *
  * @name js-assign
  * @category js
  */
-export const jsAssginHandler: Handler = {
+export const jsAssignHandler: Handler = {
   name: 'js-assign',
   handle({ doc, getAst, chars, anchorIndex, withOffset, anchor }) {
     if (!chars.includes('='))
