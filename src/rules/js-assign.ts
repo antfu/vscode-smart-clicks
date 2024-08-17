@@ -22,7 +22,7 @@ const supportedNodeType = [
  * class B {
  *     ▽
  *   b = 1;
- *   └─────┘
+ *   └────┘
  *     ▽
  *   ba = () => {};
  *   └────────────┘
