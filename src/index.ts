@@ -47,7 +47,8 @@ export function activate(ext: ExtensionContext) {
       }
 
       timer = setTimeout(async () => {
-        const { rangeIncludingLineBreak } = e.textEditor.document.lineAt(e.textEditor.selection.active.line - 1)
+        const line = Math.max(0, e.textEditor.selection.active.line - 1)
+        const { rangeIncludingLineBreak } = e.textEditor.document.lineAt(line)
 
         if (rangeIncludingLineBreak.isEqual(selection))
           return
