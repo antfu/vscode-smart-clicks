@@ -46,10 +46,29 @@ export const htmlTagPairHandler: Handler = {
             doc.positionAt(node.range[1] + ast.start),
           ))
 
+          // <input type="text" />
           if (body.trimEnd().endsWith('/>'))
             return range
-
-          const endIndex = body.lastIndexOf(`</${node.rawTagName}>`)
+          /**
+           * <div>
+           *  hello
+           * </div>
+           */
+          let endIndex = body.lastIndexOf(`</${node.rawTagName}>`)
+          if (body.trimEnd().endsWith('>')) {
+            /**
+             * <div>
+             *   world </div
+             * >
+             *
+             * <div>
+             *  <div>
+             *   hello
+             *  </div></div
+             * >
+             */
+            endIndex = body.lastIndexOf(`</${node.rawTagName}`)
+          }
           if (endIndex) {
             return [
               range,
