@@ -124,8 +124,8 @@
     ]
   },
   "scripts": {
-    "build": "NODE_ENV=production tsup",
-    "dev": "NODE_ENV=development tsup --watch",
+    "build": "NODE_ENV=production tsdown",
+    "dev": "NODE_ENV=development tsdown --watch",
     "lint": "eslint .",
     "vscode:prepublish": "nr build",
     "publish": "vsce publish --no-dependencies",
@@ -155,7 +155,7 @@
     "node-html-parser": "^6.1.13",
     "pnpm": "^9.7.1",
     "rimraf": "^6.0.1",
-    "tsup": "^8.2.4",
+    "tsdown": "^0.11.5",
     "typescript": "^5.5.4",
     "vite": "^5.4.1",
     "vitest": "^2.0.5"
