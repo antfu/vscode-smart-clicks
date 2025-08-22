@@ -128,11 +128,11 @@
     "dev": "NODE_ENV=development tsdown --watch",
     "lint": "eslint .",
     "vscode:prepublish": "nr build",
-    "publish": "vsce publish --no-dependencies",
-    "pack": "vsce package --no-dependencies",
+    "ext:publish": "vsce publish --no-dependencies",
+    "package": "vsce package --no-dependencies",
     "test": "vitest",
     "typecheck": "tsc --noEmit",
-    "release": "bumpp && nr publish",
+    "release": "bumpp",
     "readme": "esno ./scripts/docs.ts"
   },
   "devDependencies": {
@@ -153,11 +153,13 @@
     "esno": "^4.7.0",
     "fast-glob": "^3.3.2",
     "node-html-parser": "^6.1.13",
+    "ovsx": "^0.10.5",
     "pnpm": "^9.7.1",
     "rimraf": "^6.0.1",
     "tsdown": "^0.11.5",
     "typescript": "^5.5.4",
     "vite": "^5.4.1",
-    "vitest": "^2.0.5"
+    "vitest": "^2.0.5",
+    "vsxpub": "^0.1.0"
   }
 }

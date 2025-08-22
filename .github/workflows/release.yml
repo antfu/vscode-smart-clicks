@@ -1,25 +1,46 @@
-name: Release
-
-permissions:
-  contents: write
+name: Publish Extension
 
 on:
   push:
     tags:
-      - 'v*'
+      - v*
 
 jobs:
-  release:
+  publish-extension:
+    permissions:
+      id-token: write
+      contents: write
+      actions: write
+
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set node
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
+          cache: pnpm
 
-      - run: npx changelogithub
+      - run: npx changelogithub --no-group
+        continue-on-error: true
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+      - run: pnpm install
+
+      - name: Generate .vsix file
+        run: pnpm package
+
+      - name: Publish Extension
+        run: npx vsxpub --no-dependencies
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VSCE_PAT: ${{secrets.VSCE_PAT}}
+          OVSX_PAT: ${{secrets.OVSX_PAT}}
