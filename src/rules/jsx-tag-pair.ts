@@ -1,6 +1,6 @@
+import type { Handler } from '../types'
 import traverse from '@babel/traverse'
 import { Selection } from 'vscode'
-import type { Handler } from '../types'
 
 /**
  * Matches JSX elements' start and end tags.

@@ -1,6 +1,6 @@
+import type { Handler } from '../types'
 import { Selection } from 'vscode'
 import { traverseHTML } from '../parsers/html'
-import type { Handler } from '../types'
 
 /**
  * `<` to the entire element.

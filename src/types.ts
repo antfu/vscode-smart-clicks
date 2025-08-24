@@ -1,6 +1,6 @@
 import type { ParseResult as AstRootJS } from '@babel/parser'
-import type { Position, Range, Selection, TextDocument } from 'vscode'
 import type { HTMLElement as AstRootHTML } from 'node-html-parser'
+import type { Position, Range, Selection, TextDocument } from 'vscode'
 
 export interface HandlerContext {
   doc: TextDocument

@@ -1,7 +1,7 @@
 import type { HTMLElement } from 'node-html-parser'
+import type { Parser } from '../types'
 import { parse } from 'node-html-parser'
 import { workspace } from 'vscode'
-import type { Parser } from '../types'
 import { parseJS } from './javascript'
 
 export const htmlParser: Parser = {
@@ -42,8 +42,8 @@ export const htmlParser: Parser = {
   },
 }
 
-export function *traverseHTML(node: HTMLElement): Generator<HTMLElement> {
+export function* traverseHTML(node: HTMLElement): Generator<HTMLElement> {
   yield node
   for (const child of node.childNodes)
-    yield * traverseHTML(child as HTMLElement)
+    yield* traverseHTML(child as HTMLElement)
 }

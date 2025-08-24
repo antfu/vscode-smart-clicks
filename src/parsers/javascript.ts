@@ -1,6 +1,6 @@
+import type { AstRoot, Parser } from '../types'
 import { parse } from '@babel/parser'
 import { channel } from '../log'
-import type { AstRoot, Parser } from '../types'
 
 export const jsParser: Parser = {
   name: 'js',

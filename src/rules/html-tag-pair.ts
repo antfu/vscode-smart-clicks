@@ -1,6 +1,6 @@
+import type { Handler } from '../types'
 import { Range, Selection } from 'vscode'
 import { traverseHTML } from '../parsers/html'
-import type { Handler } from '../types'
 
 /**
  * Open and close tags of a HTML element.

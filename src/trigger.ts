@@ -1,10 +1,10 @@
 import type { Selection, TextDocument } from 'vscode'
 import { toArray } from '@antfu/utils'
-import { applyHandlers } from './rules'
-import { applyParser } from './parsers'
-import { toSelection } from './utils'
-import { log } from './log'
 import { createContext } from './context'
+import { log } from './log'
+import { applyParser } from './parsers'
+import { applyHandlers } from './rules'
+import { toSelection } from './utils'
 
 export async function trigger(
   doc: TextDocument,

@@ -1,6 +1,6 @@
-import { Range } from 'vscode'
 import type { Position, Selection, TextDocument } from 'vscode'
 import type { AstIdMap, AstLang, HandlerContext } from './types'
+import { Range } from 'vscode'
 import { astCache } from './index'
 
 export function createContext(

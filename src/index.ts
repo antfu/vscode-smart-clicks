@@ -1,6 +1,6 @@
 import type { ExtensionContext, Selection, TextEditor } from 'vscode'
-import { TextEditorSelectionChangeKind, commands, window, workspace } from 'vscode'
 import type { AstRoot } from './types'
+import { commands, TextEditorSelectionChangeKind, window, workspace } from 'vscode'
 import { trigger } from './trigger'
 
 export const astCache = new Map<string, AstRoot[]>()

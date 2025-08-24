@@ -1,5 +1,5 @@
-import { Position, Range, Selection } from 'vscode'
 import type { Handler } from '../types'
+import { Position, Range, Selection } from 'vscode'
 
 const bracketPairs: [left: string, right: string][] = [
   ['(', ')'],

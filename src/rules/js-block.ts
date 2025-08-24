@@ -1,9 +1,9 @@
-import traverse from '@babel/traverse'
-import { Selection } from 'vscode'
 import type { Node } from '@babel/types'
-
 // import { log } from '../log'
 import type { Handler } from '../types'
+import traverse from '@babel/traverse'
+
+import { Selection } from 'vscode'
 
 const supportedNodeType = [
   'BlockStatement',
